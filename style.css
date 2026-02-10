@@ -1,0 +1,865 @@
+/* --- GENEL AYARLAR --- */
+:root {
+  --pink-light: #ffe6ea;
+  --pink-medium: #ffcbd4;
+  --pink-accent: #ff4f8b;
+  --text-gray: #666666;
+}
+
+/* DÜZELTME: Tüm sayfa ve elementler için kalp imleci zorunlu */
+*/* --- EN BAŞLANGIÇ (TEMİZ VE SABİT) --- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Kalp imleci her yerde zorunlu */
+  cursor:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%23ff85a2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'),
+    auto !important;
+  /* Mobilde dokunmayı iyileştirir */
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  /* BU KOD ZIPLAMAYI ÖNLER: Scrollbar için yeri baştan ayırır ama gri çubuk göstermez */
+  scrollbar-gutter: stable;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  /* Yatay taşmayı (sağdaki boşlukları) kesinlikle engeller */
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--pink-light) 0%,
+    #ffffff 50%,
+    var(--pink-medium) 100%
+  );
+}
+
+/* --- MERHABA EKRANI --- */
+#greeting-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.main-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.fixed-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 5vw, 55px);
+  color: var(--text-gray);
+  margin-right: 15px;
+  letter-spacing: -1px;
+}
+.changing-word {
+  display: inline-block;
+  font-size: clamp(40px, 7vw, 70px);
+  color: var(--pink-accent);
+  padding-left: 5px;
+}
+.glow-effect {
+  text-shadow: 0 0 20px rgba(255, 79, 139, 0.5);
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+.hidden {
+  opacity: 0;
+  transform: translateY(15px);
+  visibility: hidden;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.visible-up {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+#sub-text {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-gray);
+  letter-spacing: 0.5px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  margin-top: 20px;
+}
+
+/* BUTONLAR */
+button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#start-btn,
+#continue-timeline-btn {
+  margin-top: 40px;
+  padding: 12px 50px;
+  background-color: transparent;
+  border: 1px solid var(--pink-medium);
+  border-radius: 50px;
+  color: var(--text-gray);
+  font-size: clamp(14px, 2.5vw, 20px);
+}
+#start-btn:hover,
+#continue-timeline-btn:hover {
+  background-color: #fff0f3;
+  border-color: var(--pink-accent);
+  color: var(--pink-accent);
+  transform: translateY(-2px);
+}
+
+/* ZAMAN TÜNELİ */
+#timeline-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+.timeline-title {
+  font-family: "Great Vibes", cursive;
+  font-size: 3.5rem;
+  color: var(--pink-accent);
+  text-align: center;
+  margin-bottom: 60px;
+}
+.timeline-container {
+  position: relative;
+  padding: 20px 0;
+}
+.timeline-container::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: var(--pink-medium);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+.timeline-item::after {
+  content: "❤";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: -20px;
+  background-color: #fff;
+  border: 4px solid var(--pink-accent);
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pink-accent);
+}
+.timeline-item:nth-child(even)::after {
+  left: -20px;
+}
+.timeline-content {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(255, 79, 139, 0.15);
+  backdrop-filter: blur(5px);
+}
+.timeline-content h3 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  color: #333;
+  margin: 10px 0;
+}
+.timeline-content p {
+  font-family: "Poppins", sans-serif;
+  color: #666;
+  font-size: 0.9rem;
+}
+.timeline-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 100px;
+}
+#timeline-footer-text {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.5rem;
+  color: #ff4f8b;
+  margin-bottom: 30px;
+}
+
+/* GÖREVLER LİSTESİ */
+#missions-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mission-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: var(--pink-accent);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.mission-subtitle {
+  font-family: "Poppins", sans-serif;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.missions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mission-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid white;
+}
+.mission-card .icon {
+  font-size: 2rem;
+  background: var(--pink-light);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.mission-card .details {
+  flex: 1;
+}
+.mission-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+}
+.mission-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+.mission-card .status {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.mission-card.locked {
+  opacity: 0.6;
+  filter: grayscale(1);
+  cursor: not-allowed;
+  background: #f0f0f0;
+}
+.mission-card.locked .status {
+  background: #ddd;
+  color: #888;
+}
+.mission-card.unlocked {
+  border-color: var(--pink-medium);
+}
+.mission-card.unlocked:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 79, 139, 0.2);
+}
+.mission-card.unlocked .status {
+  background: var(--pink-light);
+  color: var(--pink-accent);
+}
+.mission-card.completed {
+  border-color: #4caf50;
+  background: #e8f5e9;
+}
+.mission-card.completed .status {
+  background: #4caf50;
+  color: white;
+}
+
+/* ORTAK GÖREV ALANI STİLİ */
+.inline-task-area {
+  margin-top: 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.inline-task-area h3 {
+  font-family: "Poppins", sans-serif;
+  color: var(--pink-accent);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.back-btn {
+  float: left;
+  margin-bottom: 20px;
+  background: transparent;
+  border: 1px solid var(--pink-accent);
+  color: var(--pink-accent);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: var(--pink-accent);
+  color: white;
+}
+
+/* 1. HAFIZA OYUNU */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+.card {
+  background-color: var(--pink-medium);
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: transparent;
+  transition: transform 0.4s;
+}
+.card.flipped {
+  background-color: white;
+  border: 2px solid var(--pink-accent);
+  color: var(--pink-accent);
+  transform: rotateY(180deg);
+}
+.card.matched {
+  background-color: #4caf50;
+  color: white;
+  pointer-events: none;
+}
+
+/* 2. KALP POMPALAMA */
+.heart-bar-container {
+  width: 80%;
+  max-width: 400px;
+  height: 30px;
+  background: #eee;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--pink-medium);
+}
+#heart-fill-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff9a9e 0%, #ff4f8b 100%);
+  transition: width 0.1s linear;
+}
+#heart-percent-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 3px #000;
+}
+.action-btn {
+  background: var(--pink-accent);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 5px 0 #d9366d;
+  margin-bottom: 10px;
+}
+.action-btn:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+.floating-text {
+  position: fixed;
+  color: var(--pink-accent);
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.5rem;
+  pointer-events: none;
+  animation: floatAndFade 1s ease-out forwards;
+  z-index: 9999;
+}
+@keyframes floatAndFade {
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+/* 3. MINECRAFT CRAFTING */
+.crafting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.crafting-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  grid-template-rows: repeat(3, 50px);
+  gap: 5px;
+  background: #c6c6c6;
+  padding: 5px;
+  border: 2px solid #555;
+}
+.craft-slot,
+.result-slot {
+  width: 50px;
+  height: 50px;
+  background: #8b8b8b;
+  border: 2px solid #373737;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.result-slot {
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  background: #8b8b8b;
+}
+.inventory {
+  margin-top: 20px;
+}
+.inv-items {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.inv-item {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #555;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.inv-item:hover {
+  background: #fff;
+}
+
+/* 4. PUZZLE */
+#puzzle-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  background: #ddd;
+  padding: 5px;
+}
+.puzzle-piece {
+  width: 100%;
+  height: 100%;
+  background-size: 300px 300px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.puzzle-piece.selected {
+  border: 2px solid red;
+  z-index: 10;
+  transform: scale(0.95);
+}
+
+/* 5. ŞİFRE */
+.password-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+#password-input {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid var(--pink-medium);
+  outline: none;
+  width: 60%;
+}
+#check-password-btn {
+  padding: 10px 25px;
+  background: var(--pink-accent);
+  color: white;
+  border-radius: 30px;
+}
+
+/* 6. LABİRENT */
+/* --- 6. LABİRENT (GELİŞMİŞ STİL) --- */
+#maze-container {
+  display: grid;
+  /* 10x10'luk bir harita yapacağız */
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(10, 30px);
+  gap: 2px;
+  margin: 20px auto;
+  width: fit-content;
+  background: #ffecf0; /* Zemin rengi */
+  padding: 10px;
+  border: 4px solid var(--pink-medium);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.maze-cell {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.maze-wall {
+  background: var(--pink-medium);
+  border-radius: 8px;
+  box-shadow:
+    inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.maze-player {
+  /* Sen Kalpsin */
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 5px red);
+  animation: pulseHeart 1s infinite;
+}
+
+.maze-key {
+  /* Toplanacak Anahtarlar */
+  font-size: 1.2rem;
+  animation: floatKey 2s ease-in-out infinite;
+}
+
+.maze-goal {
+  /* Hedef Mektup */
+  font-size: 1.5rem;
+  opacity: 0.5; /* Kilitliyken soluk */
+}
+.maze-goal.unlocked {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px gold);
+  transform: scale(1.1);
+}
+
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes floatKey {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Kontrol Butonları (Mobilde daha rahat olsun) */
+.maze-controls {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.maze-controls div {
+  display: flex;
+  gap: 10px;
+}
+.maze-controls button {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  background: white;
+  border: 2px solid var(--pink-medium);
+  border-radius: 15px;
+  color: var(--pink-accent);
+  box-shadow: 0 4px 0 var(--pink-medium);
+}
+.maze-controls button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+/* ORTAK MESAJLAR */
+.inline-message {
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 25px;
+}
+.success-msg {
+  color: #4caf50;
+  animation: popIn 0.3s ease;
+}
+.error-msg {
+  color: #f44336;
+  animation: shake 0.3s ease;
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* --- ARKA PLAN EFEKTLERİ (SABİTLENDİ) --- */
+#floating-hearts-container {
+  position: fixed; /* ARTIK SAYFAYI İTTİRMEYECEK */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* İçeriğin arkasında */
+  overflow: hidden;
+}
+
+.bg-heart {
+  position: absolute;
+  bottom: -10vh;
+  font-size: 2rem;
+  color: var(--pink-medium);
+  opacity: 0.6;
+  animation: floatUp var(--float-duration) linear infinite;
+  will-change: transform;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.click-heart {
+  position: fixed;
+  font-size: 1.5rem;
+  color: var(--pink-accent);
+  pointer-events: none;
+  z-index: 99999;
+  animation: clickAnim 1s ease-out forwards;
+}
+
+@keyframes clickAnim {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translateY(-100px);
+  }
+}
+/* --- YENİ TAM EKRAN KAZI KAZAN --- */
+
+/* Tüm ekranı kaplayan katman */
+#fullscreen-scratch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #fff 0%, var(--pink-light) 100%);
+  z-index: 100000; /* Her şeyin üstünde */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Küçük ekranlarda taşarsa kaydır */
+  padding: 20px;
+}
+
+.scratch-container-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  border: 4px solid var(--pink-medium);
+}
+
+.scratch-container-content h3 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem;
+  color: var(--pink-accent);
+  margin-bottom: 10px;
+}
+
+/* Gerçek Kazı Kazan Izgarası */
+#scratch-grid-real {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 15px;
+  margin: 30px auto;
+  width: fit-content;
+}
+
+/* Kart Yapısı */
+.real-scratch-card {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Alttaki Sembol */
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  background: #f9f9f9;
+  z-index: 1; /* Altta */
+}
+
+/* Üstteki Kazınacak Canvas */
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Üstte */
+  cursor: crosshair; /* İmleç değişsin */
+  transition: opacity 0.5s ease;
+}
+
+.scratch-canvas.revealed {
+  opacity: 0; /* Tamamen kazınınca yok olsun */
+  pointer-events: none;
+}
+
+#final-result-message {
+  min-height: 30px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#finish-game-btn {
+  margin-top: 20px;
+  background: var(--pink-accent);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  animation: pulseReward 1s infinite alternate;
+}
