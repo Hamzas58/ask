@@ -962,7 +962,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- KESİN ÇALIŞAN HİLE KODU (TEST ETMEK İSTERSEN AÇABİLİRSİN) ---
-
+/*
   setTimeout(() => {
     console.log("🛠️ Hile Aktif Ediliyor...");
     const greeting = document.getElementById("greeting-section");
@@ -995,5 +995,5 @@ document.addEventListener("DOMContentLoaded", () => {
         rewardBtn.scrollIntoView({ behavior: "smooth", block: "center" });
       }, 100);
     }
-  }, 1000);
+  }, 1000); */
 });
