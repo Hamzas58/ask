@@ -1,0 +1,2574 @@
+index
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sevgililer Günü Sürprizi</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&family=Great+Vibes&family=Pacifico&family=Parisienne&family=Playball&family=Poppins:wght@300;400;600&family=Sacramento&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="login-overlay">
+      <div class="login-box">
+        <h2>❤️ Giriş Yapın ❤️</h2>
+        <p>Sürprize ulaşmak için şifreyi girin:</p>
+        <input
+          type="password"
+          id="site-password"
+          placeholder="Şifre..."
+          autocomplete="off"
+        />
+        <button id="login-btn">Giriş</button>
+        <p id="login-msg"></p>
+      </div>
+    </div>
+
+    <audio id="bg-music" loop>
+      <source src="muzik.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div id="floating-hearts-container"></div>
+
+    <div id="main-site-container">
+      <div id="greeting-section" class="content">
+        <h1 class="main-title">
+          <span class="fixed-text">merhaba</span>
+          <span id="changing-text" class="changing-word">...</span>
+        </h1>
+        <p id="sub-text" class="hidden">sevgililer günümüze hoşgeldin</p>
+        <button id="start-btn" class="hidden">başlayalım</button>
+      </div>
+
+      <div
+        id="timeline-section"
+        style="display: none; opacity: 0; transition: opacity 1s ease"
+      >
+        <h2 class="timeline-title">Bizim Hikayemiz</h2>
+
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">Başlangıç</span>
+              <h3>İlk Tanışma</h3>
+              <p>Hayatımın en güzel tesadüfü seninle tanışmaktı.</p>
+              <img
+                src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop"
+                alt="Fotoğraf"
+              />
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">İlk Buluşma</span>
+              <h3>O Büyülü Gün</h3>
+              <p>Gözlerine baktığım ilk anı asla unutmayacağım.</p>
+              <img
+                src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=600&auto=format&fit=crop"
+                alt="Fotoğraf"
+              />
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">Bugün</span>
+              <h3>Seni Seviyorum</h3>
+              <p>Hikayemiz hiç bitmesin. Sevgililer günün kutlu olsun.</p>
+              <img
+                src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop"
+                alt="Fotoğraf"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-footer">
+          <p id="timeline-footer-text">Sonsuza dek... ❤️</p>
+          <button id="continue-timeline-btn">Devam Edelim</button>
+        </div>
+      </div>
+
+      <div
+        id="missions-section"
+        style="display: none; opacity: 0; transition: opacity 1s ease"
+      >
+        <h2 class="mission-title">Yapman Gerekenler</h2>
+        <p class="mission-subtitle">seninde kazanacağın oyunlar var</p>
+
+        <div class="missions-container" id="missions-list">
+          <div class="mission-card unlocked" id="mission-1">
+            <div class="icon">🧠</div>
+            <div class="details">
+              <h3>1. Eşleştirme Oyunu</h3>
+              <p>Kartları eşleştir.</p>
+            </div>
+            <div class="status">Oyna</div>
+          </div>
+
+          <div class="mission-card locked" id="mission-2">
+            <div class="icon">💓</div>
+            <div class="details">
+              <h3>2. Aşkımızın Kalbi</h3>
+              <p>Kalbi doldurmak için hızlı ol!</p>
+            </div>
+            <div class="status">🔒</div>
+          </div>
+
+          <div class="mission-card locked" id="mission-3">
+            <div class="icon">⛏️</div>
+            <div class="details">
+              <h3>3. Mine Craft</h3>
+              <p>Bizi inşa et.</p>
+            </div>
+            <div class="status">🔒</div>
+          </div>
+
+          <div class="mission-card locked" id="mission-4">
+            <div class="icon">🧩</div>
+            <div class="details">
+              <h3>4. Puzzle yap</h3>
+              <p>Parçaları doğru yere koy.</p>
+            </div>
+            <div class="status">🔒</div>
+          </div>
+
+          <div class="mission-card locked" id="mission-5">
+            <div class="icon">🔐</div>
+            <div class="details">
+              <h3>5. Çengel Bulmaca</h3>
+              <p>Çengel bulmacadaki şifre ne?</p>
+            </div>
+            <div class="status">🔒</div>
+          </div>
+
+          <div class="mission-card locked" id="mission-6">
+            <div class="icon">💌</div>
+            <div class="details">
+              <h3>6. Mektuba Ulaş</h3>
+              <p>Labirentten çık.</p>
+            </div>
+            <div class="status">🔒</div>
+          </div>
+
+          <button
+            id="claim-reward-btn"
+            class="hidden-reward-btn"
+            style="display: none"
+          >
+            🎁 ÖDÜLÜNÜ HAKETTİN! TIKLA 🎁
+          </button>
+        </div>
+
+        <div
+          id="inline-game-area"
+          class="inline-task-area"
+          style="display: none"
+        >
+          <button class="back-btn" onclick="showMissionsList()">
+            Ana Sayfa
+          </button>
+          <h3>Kartları Eşleştir!</h3>
+          <div id="game-message" class="inline-message"></div>
+          <div id="memory-game-board" class="game-board"></div>
+        </div>
+
+        <div
+          id="inline-heart-area"
+          class="inline-task-area"
+          style="display: none"
+        >
+          <button class="back-btn" onclick="showMissionsList()">
+            Ana Sayfa
+          </button>
+          <h3>Aşkımızı Doldur! 💖</h3>
+          <p>Sana kalbim hep dolu.</p>
+
+          <div class="heart-bar-container">
+            <div id="heart-fill-bar"></div>
+            <span id="heart-percent-text">0%</span>
+          </div>
+
+          <button id="pump-heart-btn" class="action-btn">
+            ❤️ askim bas ❤️
+          </button>
+          <div id="heart-game-msg" class="inline-message"></div>
+        </div>
+
+        <div
+          id="inline-craft-area"
+          class="inline-task-area"
+          style="display: none"
+        >
+          <button class="back-btn" onclick="showMissionsList()">
+            Ana Sayfa
+          </button>
+          <h3
+            style="
+              font-family: &quot;Press Start 2P&quot;, cursive;
+              font-size: 1.2rem;
+            "
+          >
+            Crafting Table
+          </h3>
+          <p>Malzemelere tıkla ve doğru eşyayı üret!</p>
+
+          <div class="crafting-container">
+            <div class="crafting-grid" id="craft-grid">
+              <div class="craft-slot" data-index="0"></div>
+              <div class="craft-slot" data-index="1"></div>
+              <div class="craft-slot" data-index="2"></div>
+              <div class="craft-slot" data-index="3"></div>
+              <div class="craft-slot" data-index="4"></div>
+              <div class="craft-slot" data-index="5"></div>
+              <div class="craft-slot" data-index="6"></div>
+              <div class="craft-slot" data-index="7"></div>
+              <div class="craft-slot" data-index="8"></div>
+            </div>
+            <div class="arrow-right">➡️</div>
+            <div class="result-slot" id="craft-result"></div>
+          </div>
+
+          <div class="inventory">
+            <h4>Envanter (Tıkla):</h4>
+            <div class="inv-items">
+              <div class="inv-item" data-type="flower">👨</div>
+              <div class="inv-item" data-type="diamond">❤️</div>
+              <div class="inv-item" data-type="heart">👩🏻</div>
+              <div class="inv-item" data-type="stick">🪵</div>
+            </div>
+            <button id="reset-craft-btn">Temizle</button>
+          </div>
+          <div id="craft-msg" class="inline-message"></div>
+        </div>
+
+        <div
+          id="inline-puzzle-area"
+          class="inline-task-area"
+          style="display: none"
+        >
+          <button class="back-btn" onclick="showMissionsList()">
+            Ana Sayfa
+          </button>
+          <h3>Fotoğrafımızı Birleştir 🧩</h3>
+          <p>Parçalara tıklayarak yerlerini değiştir.</p>
+          <div id="puzzle-board"></div>
+          <div id="puzzle-msg" class="inline-message"></div>
+        </div>
+
+        <div
+          id="inline-password-area"
+          class="inline-task-area"
+          style="display: none"
+        >
+          <button class="back-btn" onclick="showMissionsList()">
+            Ana Sayfa
+          </button>
+          <h3>Şifreyi Gir</h3>
+          <p>Çengel bulmacada çıkan kelime neydi?</p>
+
+          <div class="password-wrapper">
+            <input
+              type="text"
+              id="password-input"
+              placeholder="Şifre..."
+              autocomplete="off"
+            />
+            <button id="check-password-btn">Kontrol Et</button>
+          </div>
+          <div id="password-feedback" class="inline-message"></div>
+        </div>
+
+        <div
+          id="inline-maze-area"
+          class="inline-task-area"
+          style="display: none"
+        >
+          <button class="back-btn" onclick="showMissionsList()">
+            Ana Sayfa
+          </button>
+          <h3>Mektuba Ulaş 💌</h3>
+          <p>Kalbi mektuba götür!</p>
+
+          <div id="maze-container"></div>
+
+          <div class="maze-controls">
+            <button id="m-up">⬆️</button>
+            <div>
+              <button id="m-left">⬅️</button>
+              <button id="m-down">⬇️</button>
+              <button id="m-right">➡️</button>
+            </div>
+          </div>
+
+          <div id="gift-reveal" style="display: none; margin-top: 20px">
+            <h3>kazandın</h3>
+            <div class="gift-content">
+              <p>beni</p>
+              <p class="big-note">bizi</p>
+              <p>seni çok seviyorum</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fullscreen-scratch-overlay" style="display: none">
+      <div class="scratch-container-content">
+        <h3>✨ Şansını Kazı Aşkım ✨</h3>
+        <p>Parmağınla veya fareyle üzerini kazı. 3 aynı sembolü bul!</p>
+
+        <div id="scratch-grid-real"></div>
+
+        <div id="final-result-message"></div>
+        <button id="finish-game-btn" style="display: none">
+          Sürprize Git! ➡️
+        </button>
+      </div>
+    </div>
+
+    <div id="final-cinema-overlay" style="display: none">
+      <div id="final-message-container">
+        <h1 id="final-text"></h1>
+      </div>
+
+      <div id="crawling-credits">
+        <div class="credits-content">
+          <h2>❤️ İSTATİSTİKLER ❤️</h2>
+
+          <div class="credit-item">
+            <h3>Söylenen Sevgi Sözcüğü</h3>
+            <p>3</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Övülen Şehir Sayısı</h3>
+            <p>2</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Küsülen Gün Sayısı</h3>
+            <p>5</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Haksız Olunan Gün</h3>
+            <p>7 (Bence şaibeli 😎)</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Seni Sevme Oranı</h3>
+            <p>% Sonsuz</p>
+          </div>
+
+          <br /><br />
+          <h2>YAPIMCI</h2>
+          <p>Seni Çok Seven Sevgilin</p>
+
+          <br /><br />
+          <h2>OYUNCULAR</h2>
+          <p>Sen & Ben</p>
+
+          <br /><br /><br />
+          <h1>MUTLU SON ❤️</h1>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+styel 
+
+/* --- GENEL AYARLAR --- */
+:root {
+  --pink-light: #ffe6ea;
+  --pink-medium: #ffcbd4;
+  --pink-accent: #ff4f8b;
+  --text-gray: #666666;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%23ff85a2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'),
+    auto !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--pink-light) 0%,
+    #ffffff 50%,
+    var(--pink-medium) 100%
+  );
+}
+
+/* --- GİRİŞ EKRANI (ŞİFRE) --- */
+#login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffe6ea 0%, #ffcbd4 100%);
+  z-index: 1000000; /* En üstte */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(255, 79, 139, 0.2);
+  text-align: center;
+  max-width: 90%;
+  width: 350px;
+  border: 2px solid white;
+}
+.login-box h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem;
+  color: var(--pink-accent);
+  margin-bottom: 20px;
+}
+.login-box p {
+  font-family: "Poppins", sans-serif;
+  color: #666;
+  margin-bottom: 20px;
+}
+#site-password {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--pink-medium);
+  border-radius: 30px;
+  outline: none;
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  color: var(--pink-accent);
+}
+#login-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--pink-accent);
+  color: white;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+}
+#login-msg {
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 20px;
+}
+
+/* --- MERHABA EKRANI --- */
+#greeting-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.main-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.fixed-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: clamp(30px, 5vw, 55px);
+  color: var(--text-gray);
+  margin-right: 15px;
+  letter-spacing: -1px;
+}
+.changing-word {
+  display: inline-block;
+  font-size: clamp(40px, 7vw, 70px);
+  color: var(--pink-accent);
+  padding-left: 5px;
+}
+.glow-effect {
+  text-shadow: 0 0 20px rgba(255, 79, 139, 0.5);
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+.hidden {
+  opacity: 0;
+  transform: translateY(15px);
+  visibility: hidden;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.visible-up {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+#sub-text {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-gray);
+  letter-spacing: 0.5px;
+  font-size: clamp(14px, 2.5vw, 20px);
+  margin-top: 20px;
+}
+
+/* BUTONLAR */
+button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#start-btn,
+#continue-timeline-btn {
+  margin-top: 40px;
+  padding: 12px 50px;
+  background-color: transparent;
+  border: 1px solid var(--pink-medium);
+  border-radius: 50px;
+  color: var(--text-gray);
+  font-size: clamp(14px, 2.5vw, 20px);
+}
+#start-btn:hover,
+#continue-timeline-btn:hover {
+  background-color: #fff0f3;
+  border-color: var(--pink-accent);
+  color: var(--pink-accent);
+  transform: translateY(-2px);
+}
+
+/* ZAMAN TÜNELİ */
+#timeline-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+.timeline-title {
+  font-family: "Great Vibes", cursive;
+  font-size: 3.5rem;
+  color: var(--pink-accent);
+  text-align: center;
+  margin-bottom: 60px;
+}
+.timeline-container {
+  position: relative;
+  padding: 20px 0;
+}
+.timeline-container::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: var(--pink-medium);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+.timeline-item::after {
+  content: "❤";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: -20px;
+  background-color: #fff;
+  border: 4px solid var(--pink-accent);
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pink-accent);
+}
+.timeline-item:nth-child(even)::after {
+  left: -20px;
+}
+.timeline-content {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(255, 79, 139, 0.15);
+  backdrop-filter: blur(5px);
+}
+.timeline-content h3 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  color: #333;
+  margin: 10px 0;
+}
+.timeline-content p {
+  font-family: "Poppins", sans-serif;
+  color: #666;
+  font-size: 0.9rem;
+}
+.timeline-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 100px;
+}
+#timeline-footer-text {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.5rem;
+  color: #ff4f8b;
+  margin-bottom: 30px;
+}
+
+/* GÖREVLER LİSTESİ */
+#missions-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mission-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: var(--pink-accent);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.mission-subtitle {
+  font-family: "Poppins", sans-serif;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.missions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mission-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid white;
+}
+.mission-card .icon {
+  font-size: 2rem;
+  background: var(--pink-light);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.mission-card .details {
+  flex: 1;
+}
+.mission-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+}
+.mission-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+.mission-card .status {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.mission-card.locked {
+  opacity: 0.6;
+  filter: grayscale(1);
+  cursor: not-allowed;
+  background: #f0f0f0;
+}
+.mission-card.locked .status {
+  background: #ddd;
+  color: #888;
+}
+.mission-card.unlocked {
+  border-color: var(--pink-medium);
+}
+.mission-card.unlocked:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 79, 139, 0.2);
+}
+.mission-card.unlocked .status {
+  background: var(--pink-light);
+  color: var(--pink-accent);
+}
+.mission-card.completed {
+  border-color: #4caf50;
+  background: #e8f5e9;
+}
+.mission-card.completed .status {
+  background: #4caf50;
+  color: white;
+}
+
+/* ORTAK GÖREV ALANI STİLİ */
+.inline-task-area {
+  margin-top: 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.inline-task-area h3 {
+  font-family: "Poppins", sans-serif;
+  color: var(--pink-accent);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.back-btn {
+  float: left;
+  margin-bottom: 20px;
+  background: transparent;
+  border: 1px solid var(--pink-accent);
+  color: var(--pink-accent);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: var(--pink-accent);
+  color: white;
+}
+
+/* 1. HAFIZA OYUNU */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+.card {
+  background-color: var(--pink-medium);
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: transparent;
+  transition: transform 0.4s;
+}
+.card.flipped {
+  background-color: white;
+  border: 2px solid var(--pink-accent);
+  color: var(--pink-accent);
+  transform: rotateY(180deg);
+}
+.card.matched {
+  background-color: #4caf50;
+  color: white;
+  pointer-events: none;
+}
+
+/* 2. KALP POMPALAMA */
+.heart-bar-container {
+  width: 80%;
+  max-width: 400px;
+  height: 30px;
+  background: #eee;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--pink-medium);
+}
+#heart-fill-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff9a9e 0%, #ff4f8b 100%);
+  transition: width 0.1s linear;
+}
+#heart-percent-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 3px #000;
+}
+.action-btn {
+  background: var(--pink-accent);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 5px 0 #d9366d;
+  margin-bottom: 10px;
+}
+.action-btn:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+.floating-text {
+  position: fixed;
+  color: var(--pink-accent);
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.5rem;
+  pointer-events: none;
+  animation: floatAndFade 1s ease-out forwards;
+  z-index: 9999;
+}
+@keyframes floatAndFade {
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+/* 3. MINECRAFT CRAFTING */
+.crafting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.crafting-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  grid-template-rows: repeat(3, 50px);
+  gap: 5px;
+  background: #c6c6c6;
+  padding: 5px;
+  border: 2px solid #555;
+}
+.craft-slot,
+.result-slot {
+  width: 50px;
+  height: 50px;
+  background: #8b8b8b;
+  border: 2px solid #373737;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.result-slot {
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  background: #8b8b8b;
+}
+.inventory {
+  margin-top: 20px;
+}
+.inv-items {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.inv-item {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #555;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.inv-item:hover {
+  background: #fff;
+}
+
+/* 4. PUZZLE */
+#puzzle-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  background: #ddd;
+  padding: 5px;
+}
+.puzzle-piece {
+  width: 100%;
+  height: 100%;
+  background-size: 300px 300px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.puzzle-piece.selected {
+  border: 2px solid red;
+  z-index: 10;
+  transform: scale(0.95);
+}
+
+/* 5. ŞİFRE */
+.password-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+#password-input {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid var(--pink-medium);
+  outline: none;
+  width: 60%;
+}
+#check-password-btn {
+  padding: 10px 25px;
+  background: var(--pink-accent);
+  color: white;
+  border-radius: 30px;
+}
+
+/* --- 6. LABİRENT (ZOR MOD) --- */
+#maze-container {
+  display: grid;
+  /* 15x15 Harita için ayar */
+  grid-template-columns: repeat(15, 20px);
+  grid-template-rows: repeat(15, 20px);
+  gap: 1px;
+  margin: 20px auto;
+  width: fit-content;
+  background: #2c3e50; /* Koyu zemin daha iyi durur */
+  padding: 5px;
+  border: 4px solid var(--pink-medium);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.maze-cell {
+  width: 20px;
+  height: 20px;
+  background: #ecf0f1; /* Yol rengi */
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px; /* İkonlar küçüldü */
+}
+
+.maze-wall {
+  background: #34495e; /* Duvar rengi */
+  box-shadow: none;
+}
+
+.maze-player {
+  font-size: 14px;
+  filter: drop-shadow(0 0 2px red);
+  z-index: 10;
+}
+
+/* Hareketli Düşman (Kırık Kalp) */
+.maze-enemy {
+  font-size: 14px;
+  filter: grayscale(1);
+  transition: all 0.2s linear; /* Akıcı hareket */
+}
+
+.maze-key {
+  font-size: 14px;
+  animation: floatKey 1s infinite;
+}
+.maze-goal {
+  font-size: 16px;
+  opacity: 0.5;
+}
+.maze-goal.unlocked {
+  opacity: 1;
+  filter: drop-shadow(0 0 5px gold);
+}
+
+/* Kontrol butonları aynı kalabilir */
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes floatKey {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.maze-controls {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.maze-controls div {
+  display: flex;
+  gap: 10px;
+}
+.maze-controls button {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  background: white;
+  border: 2px solid var(--pink-medium);
+  border-radius: 15px;
+  color: var(--pink-accent);
+  box-shadow: 0 4px 0 var(--pink-medium);
+}
+.maze-controls button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+/* ORTAK MESAJLAR */
+.inline-message {
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 25px;
+}
+.success-msg {
+  color: #4caf50;
+  animation: popIn 0.3s ease;
+}
+.error-msg {
+  color: #f44336;
+  animation: shake 0.3s ease;
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ARKA PLAN EFEKTLERİ */
+#floating-hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-heart {
+  position: absolute;
+  bottom: -10vh;
+  font-size: 2rem;
+  color: var(--pink-medium);
+  opacity: 0.6;
+  animation: floatUp var(--float-duration) linear infinite;
+  will-change: transform;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.click-heart {
+  position: fixed;
+  font-size: 1.5rem;
+  color: var(--pink-accent);
+  pointer-events: none;
+  z-index: 99999;
+  animation: clickAnim 1s ease-out forwards;
+}
+
+@keyframes clickAnim {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translateY(-100px);
+  }
+}
+
+/* --- FİNAL: KAZI KAZAN VE BUTON --- */
+.hidden-reward-btn {
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #ffeb3b, #ffc107);
+  color: #d32f2f;
+  font-weight: bold;
+  border: 3px solid #fff;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+  animation: pulseReward 1s infinite alternate;
+  cursor: pointer;
+}
+@keyframes pulseReward {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 193, 7, 1);
+  }
+}
+
+/* TAM EKRAN KAZI KAZAN */
+#fullscreen-scratch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #fff 0%, var(--pink-light) 100%);
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 20px;
+}
+.scratch-container-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  border: 4px solid var(--pink-medium);
+}
+.scratch-container-content h3 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem;
+  color: var(--pink-accent);
+  margin-bottom: 10px;
+}
+#scratch-grid-real {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 15px;
+  margin: 30px auto;
+  width: fit-content;
+}
+.real-scratch-card {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  background: #f9f9f9;
+  z-index: 1;
+}
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: crosshair;
+  transition: opacity 0.5s ease;
+}
+.scratch-canvas.revealed {
+  opacity: 0;
+  pointer-events: none;
+}
+#finish-game-btn {
+  margin-top: 20px;
+  background: var(--pink-accent);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  animation: pulseReward 1s infinite alternate;
+}
+
+/* --- FİNAL SİNEMA MODU --- */
+#final-cinema-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000; /* Sinema siyahı */
+  z-index: 200000; /* Her şeyin üstünde */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Merkezdeki Yazı Efekti */
+#final-message-container {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+#final-text {
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
+  color: #ff4f8b;
+  text-shadow: 0 0 20px rgba(255, 79, 139, 0.8);
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+/* Kayan Jenerik (Credits) */
+#crawling-credits {
+  position: absolute;
+  bottom: -100%; /* Ekranın altından başlar */
+  width: 100%;
+  text-align: center;
+  display: none; /* JS ile açılacak */
+  animation: crawl 20s linear forwards; /* 20 saniyede akar */
+}
+
+.credits-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.credits-content h2 {
+  font-family: "Poppins", sans-serif;
+  color: #ff4f8b;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.credits-content h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
+  color: #fff;
+}
+
+.credit-item {
+  margin-bottom: 30px;
+}
+
+.credit-item h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.credit-item p {
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+}
+
+@keyframes crawl {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(-150vh);
+  } /* Ekranın tepesinden çıkıp gider */
+}
+
+
+js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const audioEl = document.getElementById("bg-music");
+
+  // --- 1. GİRİŞ EKRANI VE ŞİFRE KONTROLÜ ---
+  const loginOverlay = document.getElementById("login-overlay");
+  const loginBtn = document.getElementById("login-btn");
+  const passInput = document.getElementById("site-password");
+  const loginMsg = document.getElementById("login-msg");
+
+  // Butona basınca kontrol et
+  if (loginBtn) {
+    loginBtn.addEventListener("click", checkPassword);
+  }
+
+  // Enter tuşuna basınca kontrol et
+  if (passInput) {
+    passInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") checkPassword();
+    });
+  }
+
+  function checkPassword() {
+    const password = passInput.value.trim();
+
+    // ŞİFRE BURADA: 225226
+    if (password === "225226") {
+      // Şifre Doğru
+      loginMsg.style.color = "#4CAF50";
+      loginMsg.textContent = "Giriş Başarılı! ❤️";
+
+      // Giriş ekranını yavaşça yok et
+      loginOverlay.style.opacity = "0";
+      setTimeout(() => {
+        loginOverlay.style.display = "none";
+        // Şifre doğruysa siteyi başlat
+        startEverything();
+      }, 500);
+    } else {
+      // Şifre Yanlış
+      loginMsg.style.color = "#f44336";
+      loginMsg.textContent = "Yanlış Şifre :(";
+      // Kutuyu salla
+      passInput.style.animation = "shake 0.3s";
+      setTimeout(() => (passInput.style.animation = ""), 300);
+      passInput.value = "";
+    }
+  }
+
+  // --- 2. SİTEYİ BAŞLATAN FONKSİYON ---
+  const startEverything = () => {
+    // Müziği başlat
+    audioEl.volume = 0.5;
+    audioEl.play().catch(() => {
+      console.log("Otomatik müzik tarayıcı tarafından engellendi.");
+    });
+
+    // Animasyonları başlat
+    startSiteAnimation();
+  };
+
+  // --- 3. TIKLAMA KALBİ EFEKTİ ---
+  document.addEventListener("click", (e) => {
+    const clickHeart = document.createElement("div");
+    clickHeart.classList.add("click-heart");
+    clickHeart.innerHTML = "💖";
+    clickHeart.style.left = `${e.clientX}px`;
+    clickHeart.style.top = `${e.clientY}px`;
+    document.body.appendChild(clickHeart);
+    setTimeout(() => clickHeart.remove(), 1000);
+  });
+
+  function startSiteAnimation() {
+    const wordsList = [
+      { text: "askim", font: "'Dancing Script', cursive" },
+      { text: "herseyim", font: "'Caveat', cursive" },
+      { text: "bebisim", font: "'Playball', cursive" },
+      { text: "canim", font: "'Parisienne', cursive" },
+      { text: "sevgilim", font: "'Great Vibes', cursive" },
+    ];
+
+    const changingTextEl = document.getElementById("changing-text");
+    const subTextEl = document.getElementById("sub-text");
+    const startBtnEl = document.getElementById("start-btn");
+    const heartsContainer = document.getElementById(
+      "floating-hearts-container",
+    );
+
+    // Arka plan kalpleri
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("bg-heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 2 + 1 + "rem";
+      heart.style.setProperty(
+        "--float-duration",
+        Math.random() * 10 + 15 + "s",
+      );
+      heart.style.setProperty("--sway-duration", Math.random() * 4 + 3 + "s");
+      heart.style.animationDelay = `-${Math.random() * 20}s`;
+      heartsContainer.appendChild(heart);
+    }
+
+    let currentIndex = 0;
+    let intervalId;
+    const targetWord = "sevgilim";
+
+    function updateWord() {
+      const currentItem = wordsList[currentIndex];
+      changingTextEl.textContent = currentItem.text;
+      changingTextEl.style.fontFamily = currentItem.font;
+
+      if (currentItem.text === targetWord) {
+        clearInterval(intervalId);
+        finishAnimation();
+      } else {
+        currentIndex = (currentIndex + 1) % wordsList.length;
+      }
+    }
+
+    setTimeout(() => {
+      intervalId = setInterval(updateWord, 300);
+    }, 500);
+
+    function finishAnimation() {
+      setTimeout(() => {
+        changingTextEl.classList.add("glow-effect");
+        subTextEl.classList.add("visible-up");
+        setTimeout(() => {
+          startBtnEl.classList.add("visible-up");
+        }, 1000);
+      }, 200);
+    }
+
+    // GEÇİŞLER
+    const greetingSection = document.getElementById("greeting-section");
+    const timelineSection = document.getElementById("timeline-section");
+    const missionsSection = document.getElementById("missions-section");
+
+    startBtnEl.addEventListener("click", () => {
+      greetingSection.style.opacity = "0";
+      setTimeout(() => {
+        greetingSection.style.display = "none";
+        timelineSection.style.display = "block";
+        document.body.style.overflowY = "auto";
+        setTimeout(() => {
+          timelineSection.style.opacity = "1";
+        }, 100);
+      }, 800);
+    });
+
+    // Timeline Scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            if (entry.target.id === "timeline-footer-text") {
+              setTimeout(() => {
+                document.getElementById("continue-timeline-btn").style.display =
+                  "inline-block";
+                setTimeout(
+                  () =>
+                    (document.getElementById(
+                      "continue-timeline-btn",
+                    ).style.opacity = "1"),
+                  100,
+                );
+              }, 500);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    document
+      .querySelectorAll(".timeline-item")
+      .forEach((item) => observer.observe(item));
+    observer.observe(document.getElementById("timeline-footer-text"));
+
+    document
+      .getElementById("continue-timeline-btn")
+      .addEventListener("click", () => {
+        timelineSection.style.opacity = "0";
+        setTimeout(() => {
+          timelineSection.style.display = "none";
+          missionsSection.style.display = "flex";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setTimeout(() => {
+            missionsSection.style.opacity = "1";
+          }, 100);
+        }, 800);
+      });
+  }
+
+  // ==========================================
+  // --- GÖREV SİSTEMİ MANTIĞI ---
+  // ==========================================
+
+  const missionsList = document.getElementById("missions-list");
+
+  // Geri Dönme Fonksiyonunu Global Yap
+  window.showMissionsList = () => {
+    document
+      .querySelectorAll(".inline-task-area")
+      .forEach((el) => (el.style.display = "none"));
+    missionsList.style.display = "flex";
+
+    // EĞER SON GÖREV BİTTİYSE ÖDÜL BUTONUNU GÖSTER
+    const lastMission = document.getElementById("mission-6");
+    if (lastMission && lastMission.classList.contains("completed")) {
+      const rewardBtn = document.getElementById("claim-reward-btn");
+      if (rewardBtn) {
+        rewardBtn.style.display = "block";
+        setTimeout(() => {
+          rewardBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 500);
+      }
+    }
+  };
+
+  function unlockMission(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.remove("locked");
+      el.classList.add("unlocked");
+      el.querySelector(".status").textContent = "Oyna";
+    }
+  }
+
+  function completeMission(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.remove("unlocked");
+      el.classList.add("completed");
+      el.querySelector(".status").textContent = "✅";
+    }
+  }
+
+  // --- GÖREV 1: HAFIZA OYUNU ---
+  document.getElementById("mission-1").addEventListener("click", function () {
+    if (this.classList.contains("locked")) return;
+    missionsList.style.display = "none";
+    document.getElementById("inline-game-area").style.display = "block";
+    startMemoryGame();
+  });
+
+  function startMemoryGame() {
+    const gameBoard = document.getElementById("memory-game-board");
+    const gameMsg = document.getElementById("game-message");
+    gameBoard.innerHTML = "";
+    gameMsg.innerHTML = "";
+
+    const icons = ["❤️", "❤️", "✉️", "✉️", "🎬", "🎬", "♟️", "♟️"];
+    icons.sort(() => 0.5 - Math.random());
+
+    let chosenCards = [];
+    let chosenCardsIds = [];
+    let cardsWon = [];
+
+    icons.forEach((icon, i) => {
+      const card = document.createElement("div");
+      card.setAttribute("data-id", i);
+      card.classList.add("card");
+      card.addEventListener("click", flipCard);
+      card.innerHTML = icon;
+      gameBoard.appendChild(card);
+    });
+
+    function flipCard() {
+      let cardId = this.getAttribute("data-id");
+      if (
+        !chosenCardsIds.includes(cardId) &&
+        !this.classList.contains("matched")
+      ) {
+        chosenCards.push(icons[cardId]);
+        chosenCardsIds.push(cardId);
+        this.classList.add("flipped");
+        if (chosenCards.length === 2) {
+          setTimeout(checkForMatch, 500);
+        }
+      }
+    }
+
+    function checkForMatch() {
+      const cards = document.querySelectorAll(".card");
+      const [id1, id2] = chosenCardsIds;
+      if (chosenCards[0] === chosenCards[1]) {
+        cards[id1].classList.add("matched");
+        cards[id2].classList.add("matched");
+        cardsWon.push(chosenCards);
+      } else {
+        cards[id1].classList.remove("flipped");
+        cards[id2].classList.remove("flipped");
+      }
+      chosenCards = [];
+      chosenCardsIds = [];
+
+      if (cardsWon.length === icons.length / 2) {
+        gameMsg.innerHTML = '<span class="success-msg">basitti 🎉</span>';
+        completeMission("mission-1");
+        unlockMission("mission-2");
+      }
+    }
+  }
+
+  // --- GÖREV 2: KALP POMPALAMA ---
+  document.getElementById("mission-2").addEventListener("click", function () {
+    if (this.classList.contains("locked")) return;
+    missionsList.style.display = "none";
+    document.getElementById("inline-heart-area").style.display = "block";
+    startHeartGame();
+  });
+
+  function startHeartGame() {
+    let heartLevel = 0;
+    const bar = document.getElementById("heart-fill-bar");
+    const txt = document.getElementById("heart-percent-text");
+    const msg = document.getElementById("heart-game-msg");
+    let gameActive = true;
+
+    const drainInterval = setInterval(() => {
+      if (!gameActive) {
+        clearInterval(drainInterval);
+        return;
+      }
+      if (heartLevel > 0) {
+        heartLevel -= 2;
+        updateBar();
+      }
+    }, 100);
+
+    document.getElementById("pump-heart-btn").onclick = (e) => {
+      if (!gameActive) return;
+      heartLevel += 8;
+      spawnFloatingText(e.clientX, e.clientY);
+
+      if (heartLevel >= 100) {
+        heartLevel = 100;
+        gameActive = false;
+        msg.innerHTML =
+          '<span class="success-msg">aşkımız hep dolu zaten</span>';
+        completeMission("mission-2");
+        unlockMission("mission-3");
+      }
+      updateBar();
+    };
+
+    function updateBar() {
+      if (heartLevel < 0) heartLevel = 0;
+      bar.style.width = heartLevel + "%";
+      txt.textContent = Math.floor(heartLevel) + "%";
+    }
+
+    function spawnFloatingText(x, y) {
+      const words = [
+        "askim",
+        "canim",
+        "bitanem",
+        "sevgilim",
+        "hayatım",
+        "herseyim",
+        "bebisim",
+        "kalbim",
+        "❤️",
+      ];
+      const el = document.createElement("div");
+      el.classList.add("floating-text");
+      el.innerText = words[Math.floor(Math.random() * words.length)];
+      const randomX = Math.random() * (window.innerWidth - 50);
+      el.style.left = randomX + "px";
+      el.style.top = y - 50 + "px";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1000);
+    }
+  }
+
+  // --- GÖREV 3: MINECRAFT CRAFTING ---
+  document.getElementById("mission-3").addEventListener("click", function () {
+    if (this.classList.contains("locked")) return;
+    missionsList.style.display = "none";
+    document.getElementById("inline-craft-area").style.display = "block";
+    startCraftGame();
+  });
+
+  function startCraftGame() {
+    const slots = document.querySelectorAll(".craft-slot");
+    const resultSlot = document.getElementById("craft-result");
+    const resetBtn = document.getElementById("reset-craft-btn");
+    const msg = document.getElementById("craft-msg");
+    let currentSlot = 0;
+
+    slots.forEach((s) => (s.innerHTML = ""));
+    resultSlot.innerHTML = "";
+    currentSlot = 0;
+    msg.innerHTML = "";
+
+    document.querySelectorAll(".inv-item").forEach((item) => {
+      item.onclick = function () {
+        if (currentSlot < 9) {
+          slots[currentSlot].innerHTML = this.innerHTML;
+          slots[currentSlot].dataset.type = this.dataset.type;
+          currentSlot++;
+          checkRecipe();
+        }
+      };
+    });
+
+    resetBtn.onclick = () => {
+      slots.forEach((s) => {
+        s.innerHTML = "";
+        delete s.dataset.type;
+      });
+      resultSlot.innerHTML = "";
+      currentSlot = 0;
+    };
+
+    function checkRecipe() {
+      const filled = Array.from(slots).filter((s) => s.innerHTML !== "");
+      const hasHeart = Array.from(slots).some(
+        (s) => s.dataset.type === "heart",
+      );
+      const hasFlower = Array.from(slots).some(
+        (s) => s.dataset.type === "flower",
+      );
+
+      if (hasHeart && hasFlower && filled.length >= 2) {
+        resultSlot.innerHTML = "💑";
+        msg.innerHTML = '<span class="success-msg">bizi inşa ettin 💑</span>';
+        completeMission("mission-3");
+        unlockMission("mission-4");
+      }
+    }
+  }
+
+  // --- GÖREV 4: PUZZLE ---
+  document.getElementById("mission-4").addEventListener("click", function () {
+    if (this.classList.contains("locked")) return;
+    missionsList.style.display = "none";
+    document.getElementById("inline-puzzle-area").style.display = "block";
+    startPuzzleGame();
+  });
+
+  function startPuzzleGame() {
+    const board = document.getElementById("puzzle-board");
+    const msg = document.getElementById("puzzle-msg");
+    board.innerHTML = "";
+    msg.innerHTML = "";
+
+    // FOTOĞRAF ADI: puzzle.jpg
+    const imgUrl = "puzzle.jpg";
+
+    let pieces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    // Karıştır
+    pieces = pieces.sort(() => Math.random() - 0.5);
+
+    let selectedPiece = null;
+
+    pieces.forEach((pos, index) => {
+      const div = document.createElement("div");
+      div.classList.add("puzzle-piece");
+      div.style.backgroundImage = `url('${imgUrl}')`;
+
+      // 3x3 Grid Hesaplaması
+      const row = Math.floor(pos / 3);
+      const col = pos % 3;
+
+      // Arka planı kaydırarak parçayı göster
+      div.style.backgroundPosition = `-${col * 100}px -${row * 100}px`;
+
+      div.dataset.currentPos = index;
+      div.dataset.correctPos = pos;
+
+      div.onclick = function () {
+        if (!selectedPiece) {
+          selectedPiece = this;
+          this.classList.add("selected");
+        } else {
+          // Takas Mantığı
+          const tempBg = this.style.backgroundPosition;
+          const tempCorrect = this.dataset.correctPos;
+
+          this.style.backgroundPosition =
+            selectedPiece.style.backgroundPosition;
+          this.dataset.correctPos = selectedPiece.dataset.correctPos;
+
+          selectedPiece.style.backgroundPosition = tempBg;
+          selectedPiece.dataset.correctPos = tempCorrect;
+
+          selectedPiece.classList.remove("selected");
+          selectedPiece = null;
+          checkPuzzle();
+        }
+      };
+      board.appendChild(div);
+    });
+
+    function checkPuzzle() {
+      const allPieces = document.querySelectorAll(".puzzle-piece");
+      let isCorrect = true;
+      allPieces.forEach((p, i) => {
+        if (parseInt(p.dataset.correctPos) !== i) isCorrect = false;
+      });
+
+      if (isCorrect) {
+        msg.innerHTML = '<span class="success-msg">e cokseliz 🎉</span>';
+        completeMission("mission-4");
+        unlockMission("mission-5");
+      }
+    }
+  }
+
+  // --- GÖREV 5: ŞİFRE ---
+  document.getElementById("mission-5").addEventListener("click", function () {
+    if (this.classList.contains("locked")) return;
+    missionsList.style.display = "none";
+    document.getElementById("inline-password-area").style.display = "block";
+  });
+
+  document
+    .getElementById("check-password-btn")
+    .addEventListener("click", () => {
+      const inputVal = document
+        .getElementById("password-input")
+        .value.toUpperCase()
+        .trim();
+      const feedback = document.getElementById("password-feedback");
+
+      if (inputVal === "ASKIM") {
+        feedback.innerHTML =
+          '<span class="success-msg">Doğru Bildin! Son Adım Kaldı! ❤️</span>';
+        completeMission("mission-5");
+        unlockMission("mission-6");
+        setTimeout(() => window.showMissionsList(), 1500);
+      } else {
+        feedback.innerHTML =
+          '<span class="error-msg">Yanlış Şifre :( Tekrar Dene.</span>';
+      }
+    });
+
+  // --- GÖREV 6: LABİRENT (ANAHTAR TOPLAMALI) ---
+  // --- GÖREV 6: LABİRENT (HARDCORE MOD - DÜŞMANLI) ---
+  document.getElementById("mission-6").addEventListener("click", function () {
+    if (this.classList.contains("locked")) return;
+    missionsList.style.display = "none";
+    document.getElementById("inline-maze-area").style.display = "block";
+    startMazeGame();
+  });
+
+  function startMazeGame() {
+    const mazeContainer = document.getElementById("maze-container");
+    const giftReveal = document.getElementById("gift-reveal");
+    const controls = document.querySelector(".maze-controls");
+    let mazeMsg = document.getElementById("maze-info-msg");
+
+    // Mesaj alanı yoksa oluştur
+    if (!mazeMsg) {
+      mazeMsg = document.createElement("div");
+      mazeMsg.id = "maze-info-msg";
+      mazeMsg.style.marginBottom = "10px";
+      mazeMsg.style.color = "#ff4f8b";
+      mazeMsg.style.fontWeight = "bold";
+      mazeContainer.parentNode.insertBefore(mazeMsg, mazeContainer);
+    }
+
+    mazeContainer.innerHTML = "";
+    giftReveal.style.display = "none";
+    controls.style.display = "flex";
+
+    // HARİTA EFSANESİ:
+    // 0: Yol, 1: Duvar, 2: Başlangıç, 3: Hedef, 4: Anahtar
+    // 15x15 Zor Harita
+    const map = [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 2, 0, 0, 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 1], // Anahtar 1 (Sağ üst)
+      [1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+      [1, 4, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1], // Anahtar 2 (Sol taraf)
+      [1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], // Düşman bölgesi 1
+      [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+      [1, 0, 1, 4, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1], // Anahtar 3 (Orta sol)
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], // Düşman bölgesi 2
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+      [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+      [1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+      [1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0, 0, 0, 1], // Hedef
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ];
+
+    // Düşmanlar (Kırık Kalpler 💔)
+    // x,y: Başlangıç konumu | axis: Hareket yönü (x: yatay, y: dikey) | range: Gidip geleceği kare sayısı | speed: Hız (ms)
+    let enemies = [
+      {
+        x: 5,
+        y: 5,
+        axis: "x",
+        range: 6,
+        dir: 1,
+        currentStep: 0,
+        startX: 5,
+        startY: 5,
+      },
+      {
+        x: 2,
+        y: 9,
+        axis: "x",
+        range: 10,
+        dir: 1,
+        currentStep: 0,
+        startX: 2,
+        startY: 9,
+      },
+      {
+        x: 13,
+        y: 1,
+        axis: "y",
+        range: 4,
+        dir: 1,
+        currentStep: 0,
+        startX: 13,
+        startY: 1,
+      },
+    ];
+
+    let playerPos = { x: 1, y: 1 };
+    let keysCollected = 0;
+    const totalKeys = 3;
+    let gameInterval; // Düşman hareketi için
+
+    function drawMaze() {
+      mazeContainer.innerHTML = "";
+      mazeMsg.textContent = `Anahtarlar: ${keysCollected} / ${totalKeys}`;
+
+      for (let y = 0; y < map.length; y++) {
+        for (let x = 0; x < map[0].length; x++) {
+          const cell = document.createElement("div");
+          cell.classList.add("maze-cell");
+
+          if (map[y][x] === 1) cell.classList.add("maze-wall");
+
+          // Oyuncu
+          if (x === playerPos.x && y === playerPos.y) {
+            cell.innerHTML = "❤️";
+            cell.classList.add("maze-player");
+          }
+          // Anahtar
+          else if (map[y][x] === 4) {
+            cell.innerHTML = "🗝️";
+            cell.classList.add("maze-key");
+          }
+          // Hedef
+          else if (map[y][x] === 3) {
+            cell.classList.add("maze-goal");
+            cell.innerHTML = "💌";
+            if (keysCollected === totalKeys) cell.classList.add("unlocked");
+          }
+
+          // Düşmanlar
+          let isEnemyHere = enemies.some((e) => e.x === x && e.y === y);
+          if (isEnemyHere && !(x === playerPos.x && y === playerPos.y)) {
+            cell.innerHTML = "💔";
+            cell.classList.add("maze-enemy");
+          }
+
+          mazeContainer.appendChild(cell);
+        }
+      }
+    }
+
+    // --- DÜŞMAN HAREKET MANTIĞI ---
+    function updateEnemies() {
+      enemies.forEach((e) => {
+        // Hareketi uygula
+        if (e.axis === "x") e.x += e.dir;
+        else e.y += e.dir;
+
+        e.currentStep++;
+
+        // Yön değiştirme zamanı geldi mi?
+        if (e.currentStep >= e.range) {
+          e.dir *= -1; // Yönü ters çevir
+          e.currentStep = 0;
+        }
+
+        // Çarpışma Kontrolü (Oyuncuyla düşman aynı karede mi?)
+        if (e.x === playerPos.x && e.y === playerPos.y) {
+          playerHit();
+        }
+      });
+      drawMaze();
+    }
+
+    function playerHit() {
+      // Çarpınca başa sar
+      playerPos = { x: 1, y: 1 };
+      mazeMsg.innerHTML = "💔 DİKKAT ET AŞKIM! YAKALANDIN! 💔";
+      mazeMsg.style.color = "red";
+
+      // Ekranı salla
+      mazeContainer.style.animation = "shake 0.5s";
+      setTimeout(() => {
+        mazeContainer.style.animation = "";
+        mazeMsg.style.color = "#ff4f8b";
+      }, 500);
+      drawMaze();
+    }
+
+    function move(dx, dy) {
+      const newX = playerPos.x + dx;
+      const newY = playerPos.y + dy;
+
+      // Harita dışına çıkma kontrolü
+      if (newX < 0 || newY < 0 || newX >= 15 || newY >= 15) return;
+
+      const targetCell = map[newY][newX];
+
+      // Duvar kontrolü
+      if (targetCell !== 1) {
+        // Düşman var mı kontrol et (Gideceği yerde düşman varsa)
+        let enemyAtTarget = enemies.some((e) => e.x === newX && e.y === newY);
+        if (enemyAtTarget) {
+          playerHit();
+          return;
+        }
+
+        // Anahtar Toplama
+        if (targetCell === 4) {
+          map[newY][newX] = 0;
+          keysCollected++;
+        }
+
+        // Hedef
+        if (targetCell === 3) {
+          if (keysCollected === totalKeys) {
+            // KAZANDIN
+            clearInterval(gameInterval); // Düşmanları durdur
+            playerPos.x = newX;
+            playerPos.y = newY;
+            drawMaze();
+            setTimeout(() => {
+              giftReveal.style.display = "block";
+              controls.style.display = "none";
+              mazeMsg.textContent = "TEBRİKLER AŞKIM! ❤️";
+              completeMission("mission-6");
+            }, 300);
+            return;
+          } else {
+            mazeMsg.innerHTML = "Önce tüm anahtarları (3 tane) bulmalısın! 🗝️";
+            return;
+          }
+        }
+
+        // Hareketi yap
+        playerPos.x = newX;
+        playerPos.y = newY;
+        drawMaze();
+      }
+    }
+
+    drawMaze();
+
+    // Düşmanları başlat (Her 400ms'de bir hareket ederler)
+    clearInterval(gameInterval); // Önceki varsa temizle
+    gameInterval = setInterval(updateEnemies, 400);
+
+    // Eğer oyun alanından çıkılırsa döngüyü durdur (Performans için)
+    const observer = new MutationObserver((mutations) => {
+      if (
+        document.getElementById("inline-maze-area").style.display === "none"
+      ) {
+        clearInterval(gameInterval);
+      }
+    });
+    observer.observe(document.getElementById("inline-maze-area"), {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
+
+    // Buton Kontrolleri
+    document.getElementById("m-up").onclick = () => move(0, -1);
+    document.getElementById("m-down").onclick = () => move(0, 1);
+    document.getElementById("m-left").onclick = () => move(-1, 0);
+    document.getElementById("m-right").onclick = () => move(1, 0);
+
+    // Klavye
+    document.onkeydown = function (e) {
+      if (
+        document.getElementById("inline-maze-area").style.display === "block"
+      ) {
+        if (e.key === "ArrowUp") move(0, -1);
+        if (e.key === "ArrowDown") move(0, 1);
+        if (e.key === "ArrowLeft") move(-1, 0);
+        if (e.key === "ArrowRight") move(1, 0);
+        e.preventDefault(); // Sayfa kaymasını engelle
+      }
+    };
+  }
+  // ==========================================
+  // --- FİNAL: GERÇEK KAZI KAZAN OYUNU (CANVAS) ---
+  // ==========================================
+
+  const rewardBtn = document.getElementById("claim-reward-btn");
+  const overlay = document.getElementById("fullscreen-scratch-overlay");
+
+  // Geri Dönüş Kontrolü (Listeyi göster fonksiyonu)
+  window.showMissionsList = () => {
+    document
+      .querySelectorAll(".inline-task-area")
+      .forEach((el) => (el.style.display = "none"));
+    missionsList.style.display = "flex";
+
+    // EĞER SON GÖREV BİTTİYSE ÖDÜL BUTONUNU GÖSTER
+    const lastMission = document.getElementById("mission-6");
+    if (lastMission && lastMission.classList.contains("completed")) {
+      if (rewardBtn) {
+        rewardBtn.style.display = "block";
+        setTimeout(() => {
+          rewardBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 500);
+      }
+    }
+  };
+
+  // Ödül Butonuna Tıklama -> Tam Ekranı Aç
+  if (rewardBtn) {
+    rewardBtn.addEventListener("click", () => {
+      // Ana siteyi gizle
+      document.getElementById("main-site-container").style.display = "none";
+      // Overlay'i aç
+      overlay.style.display = "flex";
+      startRealScratchGame();
+    });
+  }
+
+  function startRealScratchGame() {
+    const grid = document.getElementById("scratch-grid-real");
+    const msg = document.getElementById("final-result-message");
+    const finishBtn = document.getElementById("finish-game-btn");
+    grid.innerHTML = "";
+    msg.innerHTML = "";
+    finishBtn.style.display = "none";
+
+    // --- ÖDÜLLER ---
+    const grandPrize = { icon: "💍", name: "Akşam Yemeği!" };
+    const others = [
+      { icon: "🧸", name: "Ayıcık" },
+      { icon: "🍫", name: "Çikolata" },
+      { icon: "🌹", name: "Gül Buketi" },
+    ];
+
+    // Listeyi Oluştur (3 tane büyük, 2'şer tane küçük = 9)
+    let cardsData = [];
+    cardsData.push(grandPrize, grandPrize, grandPrize);
+    cardsData.push(others[0], others[0]);
+    cardsData.push(others[1], others[1]);
+    cardsData.push(others[2], others[2]);
+    cardsData = cardsData.sort(() => Math.random() - 0.5);
+
+    let revealedCounts = {};
+    let isGameOver = false;
+    let totalRevealedCards = 0;
+
+    // 9 Kartı Oluştur
+    cardsData.forEach((item, index) => {
+      const cardWrapper = document.createElement("div");
+      cardWrapper.classList.add("real-scratch-card");
+
+      // 1. Alt Katman (Sembol)
+      const content = document.createElement("div");
+      content.classList.add("card-content");
+      content.innerHTML = item.icon;
+
+      // 2. Üst Katman (Canvas - Kazınacak alan)
+      const canvas = document.createElement("canvas");
+      canvas.classList.add("scratch-canvas");
+      // Canvas boyutunu netlik için ayarla
+      canvas.width = 200;
+      canvas.height = 200;
+
+      cardWrapper.appendChild(content);
+      cardWrapper.appendChild(canvas);
+      grid.appendChild(cardWrapper);
+
+      // --- CANVAS ÇİZİM MANTIĞI ---
+      const ctx = canvas.getContext("2d");
+      let isDrawing = false;
+      let isRevealed = false;
+
+      // Canvas'ı Gümüş Renge Boya ve Soru İşareti Koy
+      function initCanvas() {
+        ctx.fillStyle = "#C0C0C0"; // Gümüş rengi
+        // Gradyan efekt
+        const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        grd.addColorStop(0, "#e0e0e0");
+        grd.addColorStop(1, "#a0a0a0");
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Soru işareti
+        ctx.font = "bold 80px Poppins";
+        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.textAlign = "center";
+        ctx.fillText("?", canvas.width / 2, canvas.height / 2 + 30);
+
+        // Kazıma ayarı: Çizilen yerleri şeffaf yap (Silgi modu)
+        ctx.globalCompositeOperation = "destination-out";
+      }
+      initCanvas();
+
+      // Çizim Fonksiyonu
+      function scratch(e) {
+        if (!isDrawing || isRevealed || isGameOver) return;
+
+        // Mouse veya Dokunmatik koordinatlarını al
+        const rect = canvas.getBoundingClientRect();
+        let x, y;
+        if (e.type.includes("touch")) {
+          x = e.touches[0].clientX - rect.left;
+          y = e.touches[0].clientY - rect.top;
+        } else {
+          x = e.clientX - rect.left;
+          y = e.clientY - rect.top;
+        }
+
+        // Koordinatları canvas boyutuna oranla
+        x = x * (canvas.width / rect.width);
+        y = y * (canvas.height / rect.height);
+
+        ctx.beginPath();
+        ctx.arc(x, y, 25, 0, Math.PI * 2); // 25px yarıçaplı daire sil
+        ctx.fill();
+
+        checkRevealPercentage();
+      }
+
+      // Ne kadar kazındığını kontrol et
+      function checkRevealPercentage() {
+        if (Math.random() > 0.1) return; // Performans optimizasyonu
+
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+        let transparentPixels = 0;
+
+        // Pikselleri say
+        for (let i = 3; i < pixels.length; i += 4) {
+          if (pixels[i] === 0) transparentPixels++;
+        }
+
+        const percentage = (transparentPixels / (pixels.length / 4)) * 100;
+
+        // %40'tan fazlası kazındıysa tamamını aç
+        if (percentage > 40) {
+          revealCard();
+        }
+      }
+
+      function revealCard() {
+        if (isRevealed) return;
+        isRevealed = true;
+        canvas.classList.add("revealed"); // CSS ile tamamen yok et
+
+        // Sayaç Mantığı
+        if (!revealedCounts[item.icon]) revealedCounts[item.icon] = 0;
+        revealedCounts[item.icon]++;
+
+        if (revealedCounts[item.icon] === 3) {
+          isGameOver = true;
+          msg.innerHTML = `<span class="success-msg" style="font-size:1.5rem">🎉 TEBRİKLER! <br> 3 Tane ${item.icon} Buldun! <br> Ödülün: ${item.name} 🎉</span>`;
+          launchConfetti(); // Konfeti çağrısı
+          finishBtn.style.display = "inline-block";
+          // Kalan tüm kartları aç
+          document
+            .querySelectorAll(".scratch-canvas")
+            .forEach((c) => c.classList.add("revealed"));
+        }
+      }
+
+      // Event Listener'lar
+      canvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        scratch(e);
+      });
+      canvas.addEventListener("touchstart", (e) => {
+        isDrawing = true;
+        scratch(e);
+        e.preventDefault();
+      });
+
+      canvas.addEventListener("mousemove", scratch);
+      canvas.addEventListener("touchmove", (e) => {
+        scratch(e);
+        e.preventDefault();
+      });
+
+      canvas.addEventListener("mouseup", () => {
+        isDrawing = false;
+        checkRevealPercentage();
+      });
+      canvas.addEventListener("touchend", () => {
+        isDrawing = false;
+        checkRevealPercentage();
+      });
+      canvas.addEventListener("mouseleave", () => (isDrawing = false));
+    });
+
+    // Sürprize Git Butonu (FİNAL SAHNESİNİ BAŞLATIR)
+    finishBtn.addEventListener("click", () => {
+      // Önceki ekranları kapat
+      document.getElementById("fullscreen-scratch-overlay").style.display =
+        "none";
+
+      // Final sahnesini aç
+      startFinalCinema();
+    });
+  } // startRealScratchGame fonksiyonunun sonu
+
+  // ==========================================
+  // --- FİNAL SİNEMA FONKSİYONU ---
+  // ==========================================
+  function startFinalCinema() {
+    const overlay = document.getElementById("final-cinema-overlay");
+    const textEl = document.getElementById("final-text");
+    const credits = document.getElementById("crawling-credits");
+
+    overlay.style.display = "flex";
+
+    // Müzik sesini biraz açalım (Sinema modu)
+    const audio = document.getElementById("bg-music");
+    if (audio) audio.volume = 0.8;
+
+    // --- SENARYO AKIŞI ---
+
+    // 1. Sahne: "Seni Çok Seviyorum"
+    setTimeout(() => {
+      textEl.innerText = "Seni Çok Seviyorum...";
+      textEl.style.opacity = "1";
+    }, 1000);
+
+    // Yazıyı Sil
+    setTimeout(() => {
+      textEl.style.opacity = "0";
+    }, 4000);
+
+    // 2. Sahne: "Görüşmek Üzere..."
+    setTimeout(() => {
+      textEl.innerHTML = "Görüşmek üzere<br>Aşkım, Bebeğim, Hayatım...";
+      textEl.style.opacity = "1";
+    }, 5500);
+
+    // Yazıyı Sil
+    setTimeout(() => {
+      textEl.style.opacity = "0";
+    }, 8500);
+
+    // 3. Sahne: Jenerik Akışı Başlasın
+    setTimeout(() => {
+      document.getElementById("final-message-container").style.display = "none"; // Ortadaki yazıyı kaldır
+      credits.style.display = "block"; // Jeneriği başlat (CSS animasyonu devreye girer)
+    }, 10000);
+  }
+
+  // --- Konfeti Fonksiyonu (Aynen Kalıyor) ---
+  function launchConfetti() {
+    // ... (Eski konfeti kodun burada kalacak)
+  }
+
+  // --- EKSİK OLAN KONFETİ FONKSİYONU EKLENDİ ---
+  function launchConfetti() {
+    const colors = [
+      "#f44336",
+      "#e91e63",
+      "#9c27b0",
+      "#673ab7",
+      "#3f51b5",
+      "#2196f3",
+      "#03a9f4",
+      "#00bcd4",
+      "#009688",
+      "#4CAF50",
+      "#8BC34A",
+      "#CDDC39",
+      "#FFEB3B",
+      "#FFC107",
+      "#FF9800",
+      "#FF5722",
+      "#795548",
+    ];
+
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement("div");
+      confetti.style.position = "fixed";
+      confetti.style.width = "10px";
+      confetti.style.height = "10px";
+      confetti.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.top = "-10px";
+      confetti.style.zIndex = "100000";
+      confetti.style.transition = "top 3s ease-out, transform 3s ease-out";
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.style.top = "110vh";
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+      }, 100);
+
+      setTimeout(() => confetti.remove(), 3000);
+    }
+  }
+
+  // ==========================================
+  // --- KESİN ÇALIŞAN HİLE KODU (PASİF DURUMDA) ---
+  // ==========================================
+  // Test etmek istersen aşağıdaki /* ve */ işaretlerini kaldır.
+
+  setTimeout(() => {
+    console.log("🛠️ Hile Aktif Ediliyor...");
+
+    // 1. Giriş ekranlarını yok et
+    const greeting = document.getElementById("greeting-section");
+    const timeline = document.getElementById("timeline-section");
+    const loginOverlay = document.getElementById("login-overlay");
+    if (greeting) greeting.style.display = "none";
+    if (timeline) timeline.style.display = "none";
+    if (loginOverlay) loginOverlay.style.display = "none";
+
+    // 2. Görevler ekranını aç
+    const missionsSec = document.getElementById("missions-section");
+    if (missionsSec) {
+      missionsSec.style.display = "flex";
+      missionsSec.style.opacity = "1";
+    }
+    document.body.style.overflowY = "auto";
+
+    // 3. Tüm görevleri 'completed' yap
+    for (let i = 1; i <= 6; i++) {
+      const m = document.getElementById("mission-" + i);
+      if (m) {
+        m.classList.remove("locked", "unlocked");
+        m.classList.add("completed");
+        const statusDiv = m.querySelector(".status");
+        if (statusDiv) statusDiv.textContent = "✅";
+      }
+    }
+
+    // 4. Ödül butonunu ZORLA göster
+    const rewardBtn = document.getElementById("claim-reward-btn");
+    if (rewardBtn) {
+      rewardBtn.style.display = "block";
+      rewardBtn.style.visibility = "visible";
+      rewardBtn.style.opacity = "1";
+
+      setTimeout(() => {
+        rewardBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+        console.log("Buton açıldı!");
+      }, 100);
+    }
+  }, 1000);
+});

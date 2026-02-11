@@ -14,6 +14,21 @@
     />
   </head>
   <body>
+    <div id="login-overlay">
+      <div class="login-box">
+        <h2>❤️ Giriş Yapın ❤️</h2>
+        <p>Sürprize ulaşmak için şifreyi girin:</p>
+        <input
+          type="password"
+          id="site-password"
+          placeholder="Şifre..."
+          autocomplete="off"
+        />
+        <button id="login-btn">Giriş</button>
+        <p id="login-msg"></p>
+      </div>
+    </div>
+
     <audio id="bg-music" loop>
       <source src="muzik.mp3" type="audio/mpeg" />
     </audio>
@@ -141,23 +156,15 @@
             </div>
             <div class="status">🔒</div>
           </div>
+
+          <button
+            id="claim-reward-btn"
+            class="hidden-reward-btn"
+            style="display: none"
+          >
+            🎁 ÖDÜLÜNÜ HAKETTİN! TIKLA 🎁
+          </button>
         </div>
-
-
-       <button id="claim-reward-btn" class="hidden-reward-btn" style="display: none;">
-                🎁 ÖDÜLÜNÜ HAKETTİN! TIKLA 🎁
-            </button>
-
-            <div id="inline-scratch-area" class="inline-task-area" style="display: none;">
-                <button class="back-btn" onclick="showMissionsList()">⬅️ Listeye Dön</button>
-                <h3>✨ Şansını Kazı ✨</h3>
-                <p>Kutulara tıklayarak kazı. 3 tane aynı sembolü bulursan o ödülü kazanırsın!</p>
-                
-                <div id="scratch-grid">
-                    </div>
-                
-                <div id="scratch-result-msg" class="inline-message"></div>
-            </div>
 
         <div
           id="inline-game-area"
@@ -312,22 +319,69 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
-    <div id="fullscreen-scratch-overlay" style="display: none;">
-        <div class="scratch-container-content">
-            <h3>✨ Şansını Kazı Aşkım ✨</h3>
-            <p>Parmağınla veya fareyle üzerini kazı. 3 aynı sembolü bul!</p>
-            
-            <div id="scratch-grid-real">
-                </div>
-            
-            <div id="final-result-message"></div>
-            <button id="finish-game-btn" style="display: none;">Sürprize Git! ➡️</button>
+    <div id="fullscreen-scratch-overlay" style="display: none">
+      <div class="scratch-container-content">
+        <h3>✨ Şansını Kazı Aşkım ✨</h3>
+        <p>Parmağınla veya fareyle üzerini kazı. 3 aynı sembolü bul!</p>
+
+        <div id="scratch-grid-real"></div>
+
+        <div id="final-result-message"></div>
+        <button id="finish-game-btn" style="display: none">
+          Sürprize Git! ➡️
+        </button>
+      </div>
+    </div>
+
+    <div id="final-cinema-overlay" style="display: none">
+      <div id="final-message-container">
+        <h1 id="final-text"></h1>
+      </div>
+
+      <div id="crawling-credits">
+        <div class="credits-content">
+          <h2>❤️ İSTATİSTİKLER ❤️</h2>
+
+          <div class="credit-item">
+            <h3>Söylenen Sevgi Sözcüğü</h3>
+            <p>3</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Övülen Şehir Sayısı</h3>
+            <p>2</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Küsülen Gün Sayısı</h3>
+            <p>5</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Haksız Olunan Gün</h3>
+            <p>7 (Bence şaibeli 😎)</p>
+          </div>
+
+          <div class="credit-item">
+            <h3>Seni Sevme Oranı</h3>
+            <p>% Sonsuz</p>
+          </div>
+
+          <br /><br />
+          <h2>YAPIMCI</h2>
+          <p>Seni Çok Seven Sevgilin</p>
+
+          <br /><br />
+          <h2>OYUNCULAR</h2>
+          <p>Sen & Ben</p>
+
+          <br /><br /><br />
+          <h1>MUTLU SON ❤️</h1>
+          <br /><br /><br />
         </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
-</html>
   </body>
 </html>
