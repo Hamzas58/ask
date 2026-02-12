@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sevgililer Günü Sürprizi</title>
+    <title>zehram</title>
     <link rel="stylesheet" href="style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,14 +13,18 @@
     />
   </head>
   <body>
+
+    <audio id="music-final">
+  <source src="final.mp3" type="audio/mpeg" />
+</audio>
     <div id="login-overlay">
       <div class="login-box">
-        <h2>❤️ Giriş Yapın ❤️</h2>
-        <p>Sürprize ulaşmak için şifreyi girin:</p>
+        <h2>❤️ Giriş ❤️</h2>
+        <p>uğurlu sayımız</p>
         <input
           type="password"
           id="site-password"
-          placeholder="Şifre..."
+          placeholder="şifre..."
           autocomplete="off"
         />
         <button id="login-btn">Giriş</button>
@@ -49,52 +52,79 @@
         id="timeline-section"
         style="display: none; opacity: 0; transition: opacity 1s ease"
       >
+     
         <h2 class="timeline-title">Bizim Hikayemiz</h2>
-
+        
         <div class="timeline-container">
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">Sen</span>
+              <h3>askimcraft</h3>
+              <p>enai olsam kedi severim</p>
+              <img src="mine2.jpg" alt="Fotoğraf" />
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">Ben</span>
+              <h3>askincraft</h3>
+              <p>daha iyisi olamaz</p>
+              <img src="mine1.jpg" alt="Fotoğraf" />
+            </div>
+          </div>
+
           <div class="timeline-item">
             <div class="timeline-content">
               <span class="date">Başlangıç</span>
-              <h3>İlk Tanışma</h3>
-              <p>Hayatımın en güzel tesadüfü seninle tanışmaktı.</p>
-              <img
-                src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop"
-                alt="Fotoğraf"
-              />
+              <h3>ilk an</h3>
+              <p>hayatımın en güzel tesadüfü seninle tanışmaktı</p>
+              <img src="mine3.jpg" alt="Fotoğraf" />
+            </div>
+          </div>
+
+<div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">Evlilik</span>
+              <h3>eşimsinde</h3>
+              <p>düğün kısmı supheli</p>
+              <img src="mine8.jpg" alt="Fotoğraf" />
             </div>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-content">
-              <span class="date">İlk Buluşma</span>
-              <h3>O Büyülü Gün</h3>
-              <p>Gözlerine baktığım ilk anı asla unutmayacağım.</p>
-              <img
-                src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=600&auto=format&fit=crop"
-                alt="Fotoğraf"
-              />
+              <span class="date">Ev</span>
+              <h3>evimiz</h3>
+              <p>beyaz betonluda olur</p>
+              <img src="mine4.jpg" alt="Fotoğraf" />
             </div>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-content">
-              <span class="date">Bugün</span>
-              <h3>Seni Seviyorum</h3>
-              <p>Hikayemiz hiç bitmesin. Sevgililer günün kutlu olsun.</p>
-              <img
-                src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop"
-                alt="Fotoğraf"
-              />
+              <span class="date">Kız</span>
+              <h3>kızımız</h3>
+              <p>neseki kız ya</p>
+              <img src="mine5.jpg" alt="Fotoğraf" />
             </div>
           </div>
-        </div>
 
-        <div class="timeline-footer">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <span class="date">Yıllar sonra</span>
+              <h3>yaşlılık</h3>
+              <p>hala beraberiz</p>
+              <img src="mine6.jpg" alt="Fotoğraf" />
+            </div>
+          </div>
+
+        </div> <div class="timeline-footer">
           <p id="timeline-footer-text">Sonsuza dek... ❤️</p>
           <button id="continue-timeline-btn">Devam Edelim</button>
         </div>
       </div>
-
       <div
         id="missions-section"
         style="display: none; opacity: 0; transition: opacity 1s ease"
@@ -111,7 +141,6 @@
             </div>
             <div class="status">Oyna</div>
           </div>
-
           <div class="mission-card locked" id="mission-2">
             <div class="icon">💓</div>
             <div class="details">
@@ -120,7 +149,6 @@
             </div>
             <div class="status">🔒</div>
           </div>
-
           <div class="mission-card locked" id="mission-3">
             <div class="icon">⛏️</div>
             <div class="details">
@@ -129,7 +157,6 @@
             </div>
             <div class="status">🔒</div>
           </div>
-
           <div class="mission-card locked" id="mission-4">
             <div class="icon">🧩</div>
             <div class="details">
@@ -138,16 +165,14 @@
             </div>
             <div class="status">🔒</div>
           </div>
-
           <div class="mission-card locked" id="mission-5">
             <div class="icon">🔐</div>
             <div class="details">
-              <h3>5. Çengel Bulmaca</h3>
-              <p>Çengel bulmacadaki şifre ne?</p>
+              <h3>5. Kime ait?</h3>
+              <p>Emojileri doğru kişiye sürükle!</p>
             </div>
             <div class="status">🔒</div>
           </div>
-
           <div class="mission-card locked" id="mission-6">
             <div class="icon">💌</div>
             <div class="details">
@@ -189,12 +214,10 @@
           </button>
           <h3>Aşkımızı Doldur! 💖</h3>
           <p>Sana kalbim hep dolu.</p>
-
           <div class="heart-bar-container">
             <div id="heart-fill-bar"></div>
             <span id="heart-percent-text">0%</span>
           </div>
-
           <button id="pump-heart-btn" class="action-btn">
             ❤️ askim bas ❤️
           </button>
@@ -218,7 +241,6 @@
             Crafting Table
           </h3>
           <p>Malzemelere tıkla ve doğru eşyayı üret!</p>
-
           <div class="crafting-container">
             <div class="crafting-grid" id="craft-grid">
               <div class="craft-slot" data-index="0"></div>
@@ -234,7 +256,6 @@
             <div class="arrow-right">➡️</div>
             <div class="result-slot" id="craft-result"></div>
           </div>
-
           <div class="inventory">
             <h4>Envanter (Tıkla):</h4>
             <div class="inv-items">
@@ -263,28 +284,35 @@
         </div>
 
         <div
-          id="inline-password-area"
+          id="inline-sorting-area"
           class="inline-task-area"
           style="display: none"
         >
           <button class="back-btn" onclick="showMissionsList()">
             Ana Sayfa
           </button>
-          <h3>Şifreyi Gir</h3>
-          <p>Çengel bulmacada çıkan kelime neydi?</p>
+          <h3>Bu Özellik Kime Ait? 🤔</h3>
+          <p>Emojiyi tut ve doğru kutuya bırak!</p>
 
-          <div class="password-wrapper">
-            <input
-              type="text"
-              id="password-input"
-              placeholder="Şifre..."
-              autocomplete="off"
-            />
-            <button id="check-password-btn">Kontrol Et</button>
+          <div id="emoji-source-container"></div>
+
+          <div class="sorting-boxes">
+            <div class="sort-box" data-target="user">
+              <span class="box-label">BEN</span>
+              <div class="box-content"></div>
+            </div>
+            <div class="sort-box" data-target="both">
+              <span class="box-label">İKİMİZ</span>
+              <div class="box-content"></div>
+            </div>
+            <div class="sort-box" data-target="partner">
+              <span class="box-label">SEN</span>
+              <div class="box-content"></div>
+            </div>
           </div>
-          <div id="password-feedback" class="inline-message"></div>
-        </div>
 
+          <div id="sorting-msg" class="inline-message"></div>
+        </div>
         <div
           id="inline-maze-area"
           class="inline-task-area"
@@ -295,18 +323,14 @@
           </button>
           <h3>Mektuba Ulaş 💌</h3>
           <p>Kalbi mektuba götür!</p>
-
           <div id="maze-container"></div>
-
           <div class="maze-controls">
             <button id="m-up">⬆️</button>
             <div>
-              <button id="m-left">⬅️</button>
-              <button id="m-down">⬇️</button>
-              <button id="m-right">➡️</button>
+              <button id="m-left">⬅️</button><button id="m-down">⬇️</button
+              ><button id="m-right">➡️</button>
             </div>
           </div>
-
           <div id="gift-reveal" style="display: none; margin-top: 20px">
             <h3>kazandın</h3>
             <div class="gift-content">
@@ -323,64 +347,161 @@
       <div class="scratch-container-content">
         <h3>✨ Şansını Kazı Aşkım ✨</h3>
         <p>Parmağınla veya fareyle üzerini kazı. 3 aynı sembolü bul!</p>
-
         <div id="scratch-grid-real"></div>
-
         <div id="final-result-message"></div>
         <button id="finish-game-btn" style="display: none">
-          Sürprize Git! ➡️
+          Hediyeni aç ve buraya tıkla.
         </button>
       </div>
     </div>
 
-    <div id="final-cinema-overlay" style="display: none">
-      <div id="final-message-container">
-        <h1 id="final-text"></h1>
+    <div id="final-retro-overlay" style="display: none">
+      <div class="retro-window">
+        <div class="window-title-bar">
+          <span class="title-text">zehram.craft</span>
+          <div class="window-controls">
+            <button class="win-btn">_</button><button class="win-btn">X</button>
+          </div>
+        </div>
+        <div class="window-content-area">
+          <div class="blue-screen-content">
+            <div id="scrolling-stats">
+              <p class="stat-line">IQ: <span class="highlight">136</span></p>
+              <p class="stat-line">
+                Ulaşılan potansiyel: <span class="highlight">%9</span>
+              </p>
+              <div class="bosluk"></div>
+              <p class="stat-line">
+                Enai olunan an: <span class="highlight">946872</span>
+              </p>
+              <div class="bosluk"></div>
+              <p class="stat-line">
+                Ayak basılan gezegen: <span class="highlight">1</span>
+              </p>
+
+              <p class="stat-line">
+                Ayak basılan ülke: <span class="highlight">1</span>
+              </p>
+              <div class="bosluk"></div>
+              <p class="stat-line">
+                Hoşlanılan kişi: <span class="highlight">1</span>
+              </p>
+              <p class="stat-line">
+                Küsülen günler: <span class="highlight">347</span>
+              </p>
+              <p class="stat-line">
+                Ağlamalar: <span class="highlight">51</span>
+              </p>
+
+              <div class="bosluk"></div>
+              <p class="stat-line">
+                Girilen iddia: <span class="highlight">36</span>
+              </p>
+              <p class="stat-line">
+                Kazanılan iddia: <span class="highlight">0</span>
+              </p>
+              <div class="bosluk"></div>
+
+              <p class="stat-line">
+                Gizlilik sözleşmesini okumadan onaylama:
+                <span class="highlight">48</span>
+<div class="bosluk"></div>
+
+ <p class="stat-line">
+                Yozgat belediyesi güzellik yarışması sırası:
+                <span class="highlight">1</span>
+<div class="bosluk"></div>
+                
+              </p>
+              <p class="stat-line">
+                Yapılan espriler: <span class="highlight">2205</span>
+              </p>
+              <p class="stat-line">
+                Güldürmeler: <span class="highlight">1873</span>
+              </p>
+              <div class="bosluk"></div>
+              <p class="stat-line">
+                Dövülen kız sayısı: <span class="highlight">0</span>
+              </p>
+
+              <p class="stat-line">
+                Alınan kürtçe tehdit mesajı: <span class="highlight">2</span>
+              </p>
+              <div class="bosluk"></div>
+              <p class="stat-line">
+                Mine craftta geçen zaman: <span class="highlight">30 saat</span>
+              </p>
+              <p class="stat-line">
+                Ringte kaybedilen gün: <span class="highlight">3</span>
+              </p>
+<div class="bosluk"></div>
+              <p class="stat-line">
+                Habersizce bulunduğun fotoğraf sayısı:
+                <span class="highlight">82</span>
+              </p>
+
+              <p class="stat-line">
+                Tüketilen zurna dürüm: <span class="highlight">12 metre</span>
+              </p>
+              
+<div class="bosluk"></div>
+              <p class="stat-line">
+                Avmye gitme ısrarı: <span class="highlight">249</span>
+              </p>
+              <p class="stat-line">
+                Avmye gitme işi: <span class="highlight">9</span>
+              </p>
+
+              <div class="bosluk"></div>
+              <p class="stat-line">tarafından</p>
+              <p class="stat-line">sevgilin</p>
+             <div class="bosluk"></div>
+              <p class="stat-line">görüşmek üzere</p>
+<div class="bosluk"></div>
+              <p class="stat-line">bu asla bir son değil</p>
+            </div>
+          </div>
+        </div>
+        <div class="loading-section">
+          <p class="loading-text">Sistemin Kapatılmasına:</p>
+          <div class="retro-progress-bar">
+            <div id="retro-progress-fill"></div>
+          </div>
+          <p id="progress-percent-text">0%</p>
+        </div>
       </div>
-
-      <div id="crawling-credits">
-        <div class="credits-content">
-          <h2>❤️ İSTATİSTİKLER ❤️</h2>
-
-          <div class="credit-item">
-            <h3>Söylenen Sevgi Sözcüğü</h3>
-            <p>3</p>
-          </div>
-
-          <div class="credit-item">
-            <h3>Övülen Şehir Sayısı</h3>
-            <p>2</p>
-          </div>
-
-          <div class="credit-item">
-            <h3>Küsülen Gün Sayısı</h3>
-            <p>5</p>
-          </div>
-
-          <div class="credit-item">
-            <h3>Haksız Olunan Gün</h3>
-            <p>7 (Bence şaibeli 😎)</p>
-          </div>
-
-          <div class="credit-item">
-            <h3>Seni Sevme Oranı</h3>
-            <p>% Sonsuz</p>
-          </div>
-
-          <br /><br />
-          <h2>YAPIMCI</h2>
-          <p>Seni Çok Seven Sevgilin</p>
-
-          <br /><br />
-          <h2>OYUNCULAR</h2>
-          <p>Sen & Ben</p>
-
-          <br /><br /><br />
-          <h1>MUTLU SON ❤️</h1>
-          <br /><br /><br />
+      <div id="the-end-screen" style="display: none; flex-direction: column;">
+            <h1>SON</h1>
+           
+        </div>
+    </div>
+    <div id="letter-overlay" style="display: none">
+      <div class="parchment">
+        <div class="parchment-body">
+          <h2>Sevgilim...</h2>
+          <p>
+            Labirentin sonuna ulaştın ama bu sadece oyunun sonu... Bizim
+            yolculuğumuz ise sonsuz.
+            <br /><br />
+            seni gördükten sonra zehram, sen öyle büyüdünki içimde her yanım sen
+            oldun, sonra ben sensiz olamadığımı anladım, sensiz bir hayat
+            olamayacağını
+            <br /><br />
+            iyi ki benimsin, iyi ki sevgilimsin.
+          </p>
+          <div class="signature">- hamzan</div>
+          <button id="close-letter-btn">Mektubu Kapat ve Devam Et</button>
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
 
     <script src="script.js"></script>
   </body>

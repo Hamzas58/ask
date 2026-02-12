@@ -17,23 +17,120 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- GÜNCELLENMİŞ ŞİFRE VE HİLE KONTROLÜ ---
   function checkPassword() {
     const password = passInput.value.trim();
 
-    if (password === "225226") {
-      loginMsg.style.color = "#4CAF50";
-      loginMsg.textContent = "Giriş Başarılı! ❤️";
-      loginOverlay.style.opacity = "0";
-      setTimeout(() => {
-        loginOverlay.style.display = "none";
-        startEverything();
-      }, 500);
+    // Müziği Başlat
+    audioEl.volume = 0.5;
+    audioEl.play().catch(() => console.log("Otomatik müzik engellendi."));
+
+    // HİLE KODLARI (1, 2, 3, 4, 5)
+    if (password === "9" || password === "11") {
+      successLogin();
+      startSiteAnimation(); // Normal Başlangıç
+    } else if (password === "22") {
+      successLogin();
+      directJump("timeline"); // Bizim Hikayemiz
+    } else if (password === "33") {
+      successLogin();
+      directJump("missions"); // Görevler (Açık Halde)
+    } else if (password === "44") {
+      successLogin();
+      directJump("scratch"); // Kazı Kazan
+    } else if (password === "55") {
+      successLogin();
+      directJump("retro"); // İstatistikler
     } else {
+      // Yanlış Şifre
       loginMsg.style.color = "#f44336";
       loginMsg.textContent = "Yanlış Şifre :(";
       passInput.style.animation = "shake 0.3s";
       setTimeout(() => (passInput.style.animation = ""), 300);
       passInput.value = "";
+    }
+  }
+
+  function successLogin() {
+    loginMsg.style.color = "#4CAF50";
+    loginMsg.textContent = "Giriş Başarılı! ❤️";
+    loginOverlay.style.opacity = "0";
+    setTimeout(() => {
+      loginOverlay.style.display = "none";
+    }, 500);
+  }
+
+  // HİLE İÇİN YARDIMCI FONKSİYON (Bunu checkPassword'un altına ekle)
+  // HİLE İÇİN YARDIMCI FONKSİYON (GÜNCELLENDİ)
+  function directJump(section) {
+    // Önce her şeyi gizle
+    document.getElementById("greeting-section").style.display = "none";
+    document.getElementById("timeline-section").style.display = "none";
+    document.getElementById("missions-section").style.display = "none";
+    document.getElementById("fullscreen-scratch-overlay").style.display =
+      "none";
+    document.getElementById("final-retro-overlay").style.display = "none";
+
+    const mainContainer = document.getElementById("main-site-container");
+    mainContainer.style.display = "block";
+
+    if (section === "timeline") {
+      const tl = document.getElementById("timeline-section");
+      tl.style.display = "block";
+      setTimeout(() => (tl.style.opacity = "1"), 100);
+
+      // --- DÜZELTME BURADA ---
+      // Direkt geçişte animasyon bekleme, hepsini görünür yap:
+      setTimeout(() => {
+        document.querySelectorAll(".timeline-item").forEach((item) => {
+          item.classList.add("visible");
+          item.style.opacity = "1";
+          item.style.transform = "translateY(0)";
+        });
+        // Footer kısmını da aç
+        const footerText = document.getElementById("timeline-footer-text");
+        if (footerText) footerText.classList.add("visible");
+
+        const contBtn = document.getElementById("continue-timeline-btn");
+        if (contBtn) {
+          contBtn.style.display = "inline-block";
+          contBtn.style.opacity = "1";
+
+          // Butonun çalışması için event listener'ı burada da tanımla
+          contBtn.onclick = () => {
+            tl.style.opacity = "0";
+            setTimeout(() => {
+              tl.style.display = "none";
+              document.getElementById("missions-section").style.display =
+                "flex";
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setTimeout(() => {
+                document.getElementById("missions-section").style.opacity = "1";
+              }, 100);
+            }, 800);
+          };
+        }
+      }, 200);
+    } else if (section === "missions") {
+      const ms = document.getElementById("missions-section");
+      ms.style.display = "flex";
+      setTimeout(() => (ms.style.opacity = "1"), 100);
+
+      document.querySelectorAll(".mission-card").forEach((card) => {
+        card.classList.remove("locked");
+        card.classList.add("completed");
+        const status = card.querySelector(".status");
+        if (status) status.innerText = "✅";
+      });
+      document.getElementById("claim-reward-btn").style.display = "block";
+    } else if (section === "scratch") {
+      mainContainer.style.display = "none";
+      document.getElementById("fullscreen-scratch-overlay").style.display =
+        "flex";
+      startRealScratchGame();
+    } else if (section === "retro") {
+      mainContainer.style.display = "none";
+      startFinalCinema();
     }
   }
 
@@ -57,10 +154,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function startSiteAnimation() {
     const wordsList = [
+      { text: "zehram", font: "'Caveat', cursive" },
       { text: "askim", font: "'Dancing Script', cursive" },
+      { text: "bitanem", font: "'Parisienne', cursive" },
+      { text: "hayatım", font: "'Playball', cursive" },
       { text: "herseyim", font: "'Caveat', cursive" },
       { text: "bebisim", font: "'Playball', cursive" },
       { text: "canim", font: "'Parisienne', cursive" },
+      { text: "tatli patatesim", font: "'Playball', cursive" },
+      { text: "kremalı böreğim", font: "'Dancing Script', cursive" },
+
+      { text: "tatlim", font: "'Playball', cursive" },
+      { text: "büyüleyicim", font: "'Caveat', cursive" },
+      { text: "güzelim", font: "'Dancing Script', cursive" },
       { text: "sevgilim", font: "'Great Vibes', cursive" },
     ];
 
@@ -334,6 +440,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function spawnFloatingText(x, y) {
       const words = [
         "askim",
+        "zehram",
+        "güzelim",
         "canim",
         "bitanem",
         "sevgilim",
@@ -426,7 +534,7 @@ document.addEventListener("DOMContentLoaded", () => {
     board.innerHTML = "";
     msg.innerHTML = "";
 
-    const imgUrl = "puzzle.jpg";
+    const imgUrl = "mine10.jpg";
 
     let pieces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     pieces = pieces.sort(() => Math.random() - 0.5);
@@ -479,32 +587,181 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // OYUN 5: ŞİFRE
+  // --- GÖREV 5: EMOJİ SIRALAMA OYUNU ---
   document.getElementById("mission-5").addEventListener("click", function () {
     if (this.classList.contains("locked")) return;
     missionsList.style.display = "none";
-    document.getElementById("inline-password-area").style.display = "block";
+    document.getElementById("inline-sorting-area").style.display = "block";
+    startSortingGame();
   });
 
-  document
-    .getElementById("check-password-btn")
-    .addEventListener("click", () => {
-      const inputVal = document
-        .getElementById("password-input")
-        .value.toUpperCase()
-        .trim();
-      const feedback = document.getElementById("password-feedback");
+  function startSortingGame() {
+    const sourceContainer = document.getElementById("emoji-source-container");
+    const msg = document.getElementById("sorting-msg");
+    const boxes = document.querySelectorAll(".sort-box");
 
-      if (inputVal === "ASKIM") {
-        feedback.innerHTML =
-          '<span class="success-msg">Doğru Bildin! Son Adım Kaldı! ❤️</span>';
-        completeMission("mission-5");
-        unlockMission("mission-6");
-        setTimeout(() => window.showMissionsList(), 1500);
-      } else {
-        feedback.innerHTML =
-          '<span class="error-msg">Yanlış Şifre :( Tekrar Dene.</span>';
-      }
+    sourceContainer.innerHTML = "";
+    boxes.forEach((b) => (b.querySelector(".box-content").innerHTML = ""));
+    msg.innerHTML = "";
+
+    // OYUN VERİLERİ
+    // user: Ben, partner: Sen, both: İkimiz
+    const items = [
+      { icon: "♟️", type: "user" }, // Satranç
+      { icon: "⚽", type: "user" }, // Futbol
+      { icon: "👨", type: "user" }, // Erkek
+      { icon: "🏆", type: "user" }, // Winner
+      { icon: "👸", type: "partner" }, // Prenses
+      { icon: "💄", type: "partner" }, // Makyaj
+      { icon: "🎨", type: "partner" }, // Resim
+      { icon: "😢", type: "partner" }, // Ağlama
+      { icon: "🎮", type: "both" }, // Oyun
+      { icon: "⛏️", type: "both" }, // Minecraft
+      { icon: "❤️", type: "both" }, // Kalp
+    ];
+
+    // Karıştır
+    items.sort(() => Math.random() - 0.5);
+
+    let completedCount = 0;
+
+    items.forEach((item) => {
+      const el = document.createElement("div");
+      el.classList.add("draggable-item");
+      el.textContent = item.icon;
+      el.dataset.type = item.type;
+      el.draggable = true; // PC için
+
+      // --- MOBİL DOKUNMATİK DESTEĞİ ---
+      el.addEventListener("touchstart", handleTouchStart, { passive: false });
+      el.addEventListener("touchmove", handleTouchMove, { passive: false });
+      el.addEventListener("touchend", handleTouchEnd);
+
+      // --- PC MOUSE DESTEĞİ ---
+      el.addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("type", item.type);
+        e.dataTransfer.setData("icon", item.icon);
+        setTimeout(() => (el.style.opacity = "0.5"), 0); // Sürüklenirken şeffaflaş
+      });
+      el.addEventListener("dragend", () => (el.style.opacity = "1"));
+
+      sourceContainer.appendChild(el);
     });
+
+    // --- PC İÇİN DROP MANTIĞI ---
+    boxes.forEach((box) => {
+      box.addEventListener("dragover", (e) => e.preventDefault()); // Bırakmaya izin ver
+
+      box.addEventListener("drop", (e) => {
+        e.preventDefault();
+        const draggedType = e.dataTransfer.getData("type");
+        const draggedIcon = e.dataTransfer.getData("icon");
+        const targetType = box.dataset.target;
+
+        checkDrop(draggedType, targetType, draggedIcon, box, null);
+      });
+    });
+
+    // --- MOBİL İÇİN TOUCH FONKSİYONLARI ---
+    let draggedElement = null;
+    let initialX, initialY;
+
+    function handleTouchStart(e) {
+      draggedElement = e.target;
+      const touch = e.touches[0];
+      initialX = touch.clientX - draggedElement.offsetLeft;
+      initialY = touch.clientY - draggedElement.offsetTop;
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = 1000;
+    }
+
+    function handleTouchMove(e) {
+      if (!draggedElement) return;
+      e.preventDefault(); // Sayfa kaymasını engelle
+      const touch = e.touches[0];
+      // Parmağın altına taşı
+      draggedElement.style.left = touch.clientX - 20 + "px";
+      draggedElement.style.top = touch.clientY - 20 + "px";
+    }
+
+    function handleTouchEnd(e) {
+      if (!draggedElement) return;
+
+      // Bırakılan yerdeki elementi bul
+      const touch = e.changedTouches[0];
+      draggedElement.style.display = "none"; // Geçici gizle ki alttaki kutuyu görelim
+      let dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+      draggedElement.style.display = "block"; // Geri aç
+
+      // En yakın "sort-box" ebeveynini bul
+      const box = dropTarget ? dropTarget.closest(".sort-box") : null;
+
+      if (box) {
+        checkDrop(
+          draggedElement.dataset.type,
+          box.dataset.target,
+          draggedElement.textContent,
+          box,
+          draggedElement,
+        );
+      } else {
+        // Boşa bırakıldıysa yerine dön
+        resetElement(draggedElement);
+      }
+      draggedElement = null;
+    }
+
+    function resetElement(el) {
+      el.style.position = "static";
+      el.style.zIndex = "";
+      el.style.left = "";
+      el.style.top = "";
+    }
+
+    // --- ORTAK KONTROL MEKANİZMASI ---
+    function checkDrop(itemType, boxType, icon, box, originalElement) {
+      if (itemType === boxType) {
+        // DOĞRU
+        const newEl = document.createElement("div");
+        newEl.classList.add("draggable-item", "correct-drop");
+        newEl.textContent = icon;
+        newEl.style.cursor = "default";
+        box.querySelector(".box-content").appendChild(newEl);
+
+        // Orijinal elementi sil (PC'de zaten siliniyor gibi davranır, Mobilde silmemiz lazım)
+        if (originalElement) originalElement.remove();
+        else {
+          // PC için: Kaynaktan sil (Basitçe DOM'u tarayıp eşleşeni silebiliriz)
+          const allSources = document.querySelectorAll(
+            "#emoji-source-container .draggable-item",
+          );
+          for (let el of allSources) {
+            if (el.textContent === icon && el.style.opacity !== "1") {
+              // Sürüklenen öğe
+              el.remove();
+              break;
+            }
+          }
+        }
+
+        completedCount++;
+        if (completedCount === items.length) {
+          msg.innerHTML =
+            '<span class="success-msg">Harikasın! Bizi çok iyi tanıyorsun! 🎉</span>';
+          completeMission("mission-5");
+          unlockMission("mission-6");
+        }
+      } else {
+        // YANLIŞ
+        msg.innerHTML =
+          '<span class="error-msg">Yanlış Kutu! Tekrar dene. 😅</span>';
+        box.classList.add("wrong-drop");
+        setTimeout(() => box.classList.remove("wrong-drop"), 400);
+
+        if (originalElement) resetElement(originalElement);
+      }
+    }
+  }
 
   // OYUN 6: LABİRENT
   document.getElementById("mission-6").addEventListener("click", function () {
@@ -533,7 +790,6 @@ document.addEventListener("DOMContentLoaded", () => {
     giftReveal.style.display = "none";
     controls.style.display = "flex";
 
-    // 15x15 Zor Harita
     const map = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 2, 0, 0, 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 1],
@@ -639,16 +895,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (targetCell === 3) {
           if (keysCollected === totalKeys) {
+            // KAZANDIN
             clearInterval(gameInterval);
             playerPos.x = newX;
             playerPos.y = newY;
             drawMaze();
+
+            // Eski gift-reveal yerine MEKTUBU AÇIYORUZ
             setTimeout(() => {
-              giftReveal.style.display = "block";
-              controls.style.display = "none";
-              mazeMsg.textContent = "Kilit Açıldı! ❤️";
-              completeMission("mission-6");
-            }, 300);
+              document.getElementById("letter-overlay").style.display = "flex";
+              // Konfeti de yağsın :)
+              launchConfetti();
+            }, 500);
             return;
           } else {
             mazeMsg.innerHTML = "Önce tüm anahtarları topla! 🗝️";
@@ -695,7 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // --- FİNAL KISMI ---
+  // --- FİNAL KISMI (KAZI KAZAN ve RETRO) ---
   const rewardBtn = document.getElementById("claim-reward-btn");
   const overlay = document.getElementById("fullscreen-scratch-overlay");
 
@@ -715,24 +973,24 @@ document.addEventListener("DOMContentLoaded", () => {
     msg.innerHTML = "";
     finishBtn.style.display = "none";
 
-    const grandPrize = { icon: "💍", name: "Akşam Yemeği!" };
-    const others = [
-      { icon: "🧸", name: "Ayıcık" },
-      { icon: "🍫", name: "Çikolata" },
-      { icon: "🌹", name: "Gül Buketi" },
-    ];
+    // SENİN BELİRLEDİĞİN SABİT SIRALAMA
 
-    let cardsData = [];
-    cardsData.push(grandPrize, grandPrize, grandPrize);
-    cardsData.push(others[0], others[0]);
-    cardsData.push(others[1], others[1]);
-    cardsData.push(others[2], others[2]);
-    cardsData = cardsData.sort(() => Math.random() - 0.5);
+    const fixedGrid = [
+      { icon: "🧸", name: "Peluş Ayı" }, // 1.1
+      { icon: "📷", name: "Mini Kamera" }, // 1.2
+      { icon: "👷‍♀️", name: "Lego" }, // 1.3
+      { icon: "👷‍♀️", name: "Lego" }, // 2.1
+      { icon: "💍", name: "Kolye" }, // 2.2
+      { icon: "📷", name: "Mini Kamera" }, // 2.3
+      { icon: "💍", name: "Kolye" }, // 3.1
+      { icon: "🧸", name: "Peluş Ayı" }, // 3.2
+      { icon: "📷", name: "Mini Kamera" }, // 3.3 (KAZANAN)
+    ];
 
     let revealedCounts = {};
     let isGameOver = false;
 
-    cardsData.forEach((item, index) => {
+    fixedGrid.forEach((item) => {
       const cardWrapper = document.createElement("div");
       cardWrapper.classList.add("real-scratch-card");
 
@@ -760,18 +1018,22 @@ document.addEventListener("DOMContentLoaded", () => {
         grd.addColorStop(1, "#a0a0a0");
         ctx.fillStyle = grd;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         ctx.font = "bold 80px Poppins";
         ctx.fillStyle = "rgba(255,255,255,0.5)";
         ctx.textAlign = "center";
         ctx.fillText("?", canvas.width / 2, canvas.height / 2 + 30);
+
         ctx.globalCompositeOperation = "destination-out";
       }
       initCanvas();
 
       function scratch(e) {
-        if (!isDrawing || isRevealed || isGameOver) return;
+        if (isRevealed || isGameOver) return;
+
         const rect = canvas.getBoundingClientRect();
         let x, y;
+
         if (e.type.includes("touch")) {
           x = e.touches[0].clientX - rect.left;
           y = e.touches[0].clientY - rect.top;
@@ -779,8 +1041,11 @@ document.addEventListener("DOMContentLoaded", () => {
           x = e.clientX - rect.left;
           y = e.clientY - rect.top;
         }
+
+        // Koordinatları canvas boyutuna oranla
         x = x * (canvas.width / rect.width);
         y = y * (canvas.height / rect.height);
+
         ctx.beginPath();
         ctx.arc(x, y, 25, 0, Math.PI * 2);
         ctx.fill();
@@ -788,13 +1053,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function checkRevealPercentage() {
-        if (Math.random() > 0.1) return;
+        if (Math.random() > 0.1) return; // Performans ayarı
+
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const pixels = imageData.data;
         let transparentPixels = 0;
+
         for (let i = 3; i < pixels.length; i += 4) {
           if (pixels[i] === 0) transparentPixels++;
         }
+
         const percentage = (transparentPixels / (pixels.length / 4)) * 100;
         if (percentage > 40) {
           revealCard();
@@ -814,15 +1082,17 @@ document.addEventListener("DOMContentLoaded", () => {
           msg.innerHTML = `<span class="success-msg" style="font-size:1.5rem">🎉 TEBRİKLER! <br> 3 Tane ${item.icon} Buldun! <br> Ödülün: ${item.name} 🎉</span>`;
           launchConfetti();
 
-          // EKSİK OLAN KISIM EKLENDİ: BUTON ARTIK GÖRÜNÜYOR
+          // BUTONU GÖSTER
           finishBtn.style.display = "inline-block";
 
+          // Kalanları otomatik aç
           document
             .querySelectorAll(".scratch-canvas")
             .forEach((c) => c.classList.add("revealed"));
         }
       }
 
+      // --- DÜZELTİLMİŞ EVENT LISTENERLAR (TAKILMA YAPMAZ) ---
       canvas.addEventListener("mousedown", (e) => {
         isDrawing = true;
         scratch(e);
@@ -832,93 +1102,95 @@ document.addEventListener("DOMContentLoaded", () => {
         scratch(e);
         e.preventDefault();
       });
-      canvas.addEventListener("mousemove", scratch);
+
+      canvas.addEventListener("mousemove", (e) => {
+        // Sol tık basılıysa (buttons === 1) çizmeye devam et, kutuya girince algılar
+        if (e.buttons === 1) {
+          isDrawing = true;
+          scratch(e);
+        }
+      });
+
       canvas.addEventListener("touchmove", (e) => {
+        isDrawing = true;
         scratch(e);
         e.preventDefault();
       });
-      canvas.addEventListener("mouseup", () => {
+
+      // Tıklamayı bırakınca çizimi durdur (Global)
+      document.addEventListener("mouseup", () => {
         isDrawing = false;
-        checkRevealPercentage();
       });
       canvas.addEventListener("touchend", () => {
         isDrawing = false;
         checkRevealPercentage();
       });
-      canvas.addEventListener("mouseleave", () => (isDrawing = false));
     });
 
-    finishBtn.addEventListener("click", () => {
+    // Butona basınca RETRO EKRANI aç
+    // (Önceki listener'ları temizlemek için klonlama hilesi veya basitçe yeniden tanımlama)
+    // En temiz yöntem: Butonun eski listener'ını silip yenisini eklemek yerine, butonu HTML'de gizleyip burada gösteriyoruz.
+    finishBtn.onclick = () => {
       document.getElementById("fullscreen-scratch-overlay").style.display =
         "none";
       startFinalCinema();
-    });
+    };
   }
 
-  // --- DÜZELTME: FİNAL SİNEMA SAHNESİ (KAYDIRMA AYARLI) ---
+  // --- RETRO PENCERE MODU ---
+  // --- RETRO PENCERE MODU (YAVAŞLATILDI) ---
   function startFinalCinema() {
-    const overlay = document.getElementById("final-cinema-overlay");
-    const textEl = document.getElementById("final-text");
-    const credits = document.getElementById("crawling-credits");
+    const overlay = document.getElementById("final-retro-overlay");
+    const progressBar = document.getElementById("retro-progress-fill");
+    const percentText = document.getElementById("progress-percent-text");
+    const endScreen = document.getElementById("the-end-screen");
+    const windowBox = document.querySelector(".retro-window");
 
+    // Pencereyi Göster
     overlay.style.display = "flex";
-    // Başlangıçta kaydırmayı kesinlikle kilitle
-    overlay.style.overflowY = "hidden";
-    overlay.scrollTop = 0;
 
-    const audio = document.getElementById("bg-music");
-    if (audio) audio.volume = 0.8;
+    // Müzik sesini ayarla
+    const oldMusic = document.getElementById("bg-music");
+    if (oldMusic) oldMusic.pause();
 
-    // 1. Sahne
-    setTimeout(() => {
-      textEl.innerText = "Seni Çok Seviyorum...";
-      textEl.style.opacity = "1";
-    }, 1000);
+    // 2. Final müziğini başlat
+    const finalMusic = document.getElementById("music-final");
+    if (finalMusic) {
+      finalMusic.volume = 1.0;
 
-    setTimeout(() => {
-      textEl.style.opacity = "0";
-    }, 4000);
+      // --- BURASI MÜZİĞİN BAŞLANGIÇ SANİYESİ ---
+      // Örnek: 1:20'den başlatmak için (60 + 20) = 80 yaz.
+      // Baştan başlaması için 0 yaz.
+      finalMusic.currentTime = 83;
+      // ------------------------------------------
 
-    // 2. Sahne
-    setTimeout(() => {
-      textEl.innerHTML = "Görüşmek üzere<br>Aşkım, Bebeğim, Hayatım...";
-      textEl.style.opacity = "1";
-    }, 5500);
+      finalMusic.play().catch((e) => console.log("Müzik hatası:", e));
+    }
+    // Yükleme Çubuğu Mantığı
+    let progress = 0;
 
-    setTimeout(() => {
-      textEl.style.opacity = "0";
-    }, 8500);
+    // Süreyi 30 saniyeye yaymak için: 30000ms / 100 birim = 300ms
+    const duration = 400; // Her %1 artış 300ms sürecek (Daha yavaş)
 
-    // 3. Sahne: Jenerik Başlıyor
-    setTimeout(() => {
-      document.getElementById("final-message-container").style.display = "none";
-      credits.style.display = "block";
+    const loadingInterval = setInterval(() => {
+      progress++;
+      progressBar.style.width = `${progress}%`;
+      percentText.innerText = `${progress}%`;
 
-      // ARTIK KAYDIRMAYA İZİN VER
-      overlay.style.overflowY = "auto";
+      if (progress >= 100) {
+        clearInterval(loadingInterval);
+        setTimeout(() => {
+          windowBox.style.display = "none";
+          endScreen.style.display = "flex"; // SON ekranı aç
 
-      // Otomatik Kaydırma Başlat
-      let scrollInterval = setInterval(() => {
-        overlay.scrollTop += 1;
-
-        // Eğer sona geldiyse durdur
-        if (overlay.scrollTop + overlay.clientHeight >= overlay.scrollHeight) {
-          clearInterval(scrollInterval);
-        }
-      }, 30);
-
-      // Kullanıcı ekrana dokunursa otomatiği durdur
-      const stopAutoScroll = () => {
-        clearInterval(scrollInterval);
-        overlay.removeEventListener("wheel", stopAutoScroll);
-        overlay.removeEventListener("touchstart", stopAutoScroll);
-        overlay.removeEventListener("mousedown", stopAutoScroll);
-      };
-
-      overlay.addEventListener("wheel", stopAutoScroll);
-      overlay.addEventListener("touchstart", stopAutoScroll);
-      overlay.addEventListener("mousedown", stopAutoScroll);
-    }, 10000); // 10 saniye sonra başlar
+          // --- YENİ EKLENEN KISIM: BUTONU GÖSTER ---
+          setTimeout(() => {
+            document.getElementById("show-menu-btn").style.opacity = "1";
+          }, 2000); // SON yazısından 2 saniye sonra buton belirsin
+          // ------------------------------------------
+        }, 2000);
+      }
+    }, duration);
   }
 
   function launchConfetti() {
@@ -960,9 +1232,21 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => confetti.remove(), 3000);
     }
   }
+  // --- MEKTUP KAPATMA VE ÖDÜLÜ GÖSTERME ---
+  const closeLetterBtn = document.getElementById("close-letter-btn");
+  if (closeLetterBtn) {
+    closeLetterBtn.addEventListener("click", () => {
+      // Mektubu kapat
+      document.getElementById("letter-overlay").style.display = "none";
 
-  // --- KESİN ÇALIŞAN HİLE KODU (TEST ETMEK İSTERSEN AÇABİLİRSİN) ---
-/*
+      // Görevi tamamla ve listeye dön
+      completeMission("mission-6");
+      window.showMissionsList();
+    });
+  }
+
+  // --- HİLE KODU (TEST İÇİN AÇABİLİRSİN) ---
+  /*
   setTimeout(() => {
     console.log("🛠️ Hile Aktif Ediliyor...");
     const greeting = document.getElementById("greeting-section");
